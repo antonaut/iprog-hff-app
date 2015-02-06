@@ -17,17 +17,17 @@ var DinnerModel = function() {
             throw 'Unexpected input : ' + num;
         }
         this._guests = num;
-	}
+	};
 
 	// Returns the number of guests at the party
 	this.getNumberOfGuests = function() {
         return this._guests;
-	}
+	};
 
 	// Returns the dish that is on the menu for selected type
 	this.getSelectedDish = function(type) {
         return this._selectedDish;
-	}
+	};
 
 	// Returns all the dishes on the menu as an object:
     // Example:
@@ -38,7 +38,7 @@ var DinnerModel = function() {
     //  }
 	this.getFullMenu = function() {
         return this._menu;
-	}
+	};
 
 	// Returns all ingredients for all the dishes on the menu.
 	this.getAllIngredients = function() {
@@ -60,7 +60,7 @@ var DinnerModel = function() {
         }
 
         return ingredients;
-	}
+	};
 
     // Throws if the id's doesnt exist
     // Returns an array with ingredients (or the empty array).
@@ -73,13 +73,13 @@ var DinnerModel = function() {
             return [];
         }
         return dish.ingredients;
-    }
+    };
 
 	// Returns the total price of the menu (all the ingredients multiplied by number of guests).
 	this.getTotalMenuPrice = function() {
         var ingredients = this.getAllIngredients();
         return ingredients.reduce(function(x, y) { return x['price'] + y['price']; });
-	}
+	};
 
 	// Adds the passed dish to the menu. If the dish of that type already exists on the menu
 	// it is removed from the menu and the new one added.
@@ -90,7 +90,7 @@ var DinnerModel = function() {
         }
         var type = dish["type"];
         this._menu[type] = dish;
-	}
+	};
 
 	// Removes dish from menu
 	this.removeDishFromMenu = function(id) {
@@ -108,7 +108,7 @@ var DinnerModel = function() {
         }
 
         throw "No dish in menu with id: " + id;
-	}
+	};
 
 	// Returns all dishes of specific type (i.e. "starter", "main dish" or "dessert").
 	// You can use the filter argument to filter out the dish by name or ingredient (use for search).
@@ -130,7 +130,7 @@ var DinnerModel = function() {
 		}
 	  	return dish.type == type && found;
 	  });
-	}
+	};
 
 	// Returns a dish of specific ID.
 	this.getDish = function (id) {
@@ -139,7 +139,7 @@ var DinnerModel = function() {
 				return dishes[key];
 			}
 		}
-	}
+	};
 
 
 	// The dishes variable contains an array of all the
@@ -393,4 +393,4 @@ var DinnerModel = function() {
 		}
 	];
 
-}
+};
