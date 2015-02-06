@@ -1,53 +1,118 @@
-//DinnerModel Object constructor
+// DinnerModel Object constructor
 var DinnerModel = function() {
- 
-	//TODO Lab 2 implement the data structure that will hold number of guest
-	// and selected dinner options for dinner menu
 
+    this._guests = 0; // Number of guests at party
+    this._selectedDish = null; // The currently selected dish
 
+    // The dinner menu of the party
+    this._menu = {
+        'starter': null,
+        'main dish': null,
+        'dessert': null
+    };
+
+    // Sets the number of guests at the party
 	this.setNumberOfGuests = function(num) {
-		//TODO Lab 2
+        if (!num || typeof num !== 'number' || num < 0) {
+            throw 'Unexpected input : ' + num;
+        }
+        this._guests = num;
 	}
 
-	// should return 
+	// Returns the number of guests at the party
 	this.getNumberOfGuests = function() {
-		//TODO Lab 2
+        return this._guests;
 	}
 
-	//Returns the dish that is on the menu for selected type 
+	// Returns the dish that is on the menu for selected type
 	this.getSelectedDish = function(type) {
-		//TODO Lab 2
+        return this._selectedDish;
 	}
 
-	//Returns all the dishes on the menu.
+	// Returns all the dishes on the menu as an object:
+    // Example:
+    //  this._menu = {+
+    //     'starter': { 'id': 101, 'description': 'lol i can has', ... },
+    //     'main dish': null,
+    //     'dessert': null
+    //  }
 	this.getFullMenu = function() {
-		//TODO Lab 2
+        return this._menu;
 	}
 
-	//Returns all ingredients for all the dishes on the menu.
+	// Returns all ingredients for all the dishes on the menu.
 	this.getAllIngredients = function() {
-		//TODO Lab 2
+        var ingredients = [];
+
+        if (this._menu['starter']) {
+            var dish_id = this._menu['starter'].id;
+            ingredients.concat(this._getIngredientsFromDish(dish_id));
+        }
+
+        if (this._menu['main dish']) {
+            var dish_id = ._menu['main dish'].id;
+            ingredients.concat(this._getIngredientsFromDish(dish_id));
+        }
+
+        if (this._menu['dessert']) {
+            var dish_id = this._menu['dessert'].id;
+            ingredients.concat(this._getIngredientsFromDish(dish_id));
+        }
+
+        return ingredients;
 	}
 
-	//Returns the total price of the menu (all the ingredients multiplied by number of guests).
+    // Throws if the id's doesnt exist
+    // Returns an array with ingredients (or the empty array).
+    this._getIngredientsFromDish = function(id) {
+        var dish = this.getDish(id);
+        if (!dish) {
+            throw 'Couldn\'t find dish with id: ' + id;
+        }
+        if (!dish.ingredients) {
+            return [];
+        }
+        return dish.ingredients;
+    }
+
+	// Returns the total price of the menu (all the ingredients multiplied by number of guests).
 	this.getTotalMenuPrice = function() {
-		//TODO Lab 2
+        var ingredients = this.getAllIngredients();
+        return ingredients.reduce(function(x, y) { return x['price'] + y['price']; });
 	}
 
-	//Adds the passed dish to the menu. If the dish of that type already exists on the menu
-	//it is removed from the menu and the new one added.
+	// Adds the passed dish to the menu. If the dish of that type already exists on the menu
+	// it is removed from the menu and the new one added.
 	this.addDishToMenu = function(id) {
-		//TODO Lab 2 
+		var dish = this.getDish(id);
+        if (!dish) {
+            throw "No dish with id: " + id;
+        }
+        var type = dish["type"];
+        this._menu[type] = dish;
 	}
 
-	//Removes dish from menu
+	// Removes dish from menu
 	this.removeDishFromMenu = function(id) {
-		//TODO Lab 2
+        var dish_type_to_remove = undefined; // id not set
+		for (dish_type in this._menu) {
+            var dish_id = this._menu[dish_type].id;
+            if (dish_id === id) {
+                    dish_type_to_remove = dish_type;
+            }
+        }
+
+        if (dish_type_to_remove) {
+            this._menu[dish_type_to_remove] = null;
+            return;
+        }
+
+        throw "No dish in menu with id: " + id;
 	}
 
-	//function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")
-	//you can use the filter argument to filter out the dish by name or ingredient (use for search)
-	//if you don't pass any filter all the dishes will be returned
+	// Returns all dishes of specific type (i.e. "starter", "main dish" or "dessert").
+	// You can use the filter argument to filter out the dish by name or ingredient (use for search).
+	// If you don't pass any filter all the dishes will be returned.
 	this.getAllDishes = function (type,filter) {
 	  return $(dishes).filter(function(index,dish) {
 		var found = true;
@@ -64,10 +129,10 @@ var DinnerModel = function() {
 			}
 		}
 	  	return dish.type == type && found;
-	  });	
+	  });
 	}
 
-	//function that returns a dish of specific ID
+	// Returns a dish of specific ID.
 	this.getDish = function (id) {
 	  for(key in dishes){
 			if(dishes[key].id == id) {
@@ -77,11 +142,11 @@ var DinnerModel = function() {
 	}
 
 
-	// the dishes variable contains an array of all the 
-	// dishes in the database. each dish has id, name, type,
+	// The dishes variable contains an array of all the
+	// dishes in the database. Each dish has id, name, type,
 	// image (name of the image file), description and
-	// array of ingredients. Each ingredient has name, 
-	// quantity (a number), price (a number) and unit (string 
+	// array of ingredients. Each ingredient has name,
+	// quantity (a number), price (a number) and unit (string
 	// defining the unit i.e. "g", "slices", "ml". Unit
 	// can sometimes be empty like in the example of eggs where
 	// you just say "5 eggs" and not "5 pieces of eggs" or anything else.
@@ -91,7 +156,7 @@ var DinnerModel = function() {
 		'type':'starter',
 		'image':'toast.jpg',
 		'description':"In a large mixing bowl, beat the eggs. Add the milk, brown sugar and nutmeg; stir well to combine. Soak bread slices in the egg mixture until saturated. Heat a lightly oiled griddle or frying pan over medium high heat. Brown slices on both sides, sprinkle with cinnamon and serve hot.",
-		'ingredients':[{ 
+		'ingredients':[{
 			'name':'eggs',
 			'quantity':0.5,
 			'unit':'',
@@ -123,7 +188,7 @@ var DinnerModel = function() {
 		'type':'starter',
 		'image':'sourdough.jpg',
 		'description':"Here is how you make it... Lore ipsum...",
-		'ingredients':[{ 
+		'ingredients':[{
 			'name':'active dry yeast',
 			'quantity':0.5,
 			'unit':'g',
@@ -145,7 +210,7 @@ var DinnerModel = function() {
 		'type':'starter',
 		'image':'bakedbrie.jpg',
 		'description':"Here is how you make it... Lore ipsum...",
-		'ingredients':[{ 
+		'ingredients':[{
 			'name':'round Brie cheese',
 			'quantity':10,
 			'unit':'g',
@@ -167,7 +232,7 @@ var DinnerModel = function() {
 		'type':'main dish',
 		'image':'meatballs.jpg',
 		'description':"Preheat an oven to 400 degrees F (200 degrees C). Place the beef into a mixing bowl, and season with salt, onion, garlic salt, Italian seasoning, oregano, red pepper flakes, hot pepper sauce, and Worcestershire sauce; mix well. Add the milk, Parmesan cheese, and bread crumbs. Mix until evenly blended, then form into 1 1/2-inch meatballs, and place onto a baking sheet. Bake in the preheated oven until no longer pink in the center, 20 to 25 minutes.",
-		'ingredients':[{ 
+		'ingredients':[{
 			'name':'extra lean ground beef',
 			'quantity':115,
 			'unit':'g',
@@ -229,7 +294,7 @@ var DinnerModel = function() {
 		'type':'main dish',
 		'image':'bakedbrie.jpg',
 		'description':"Here is how you make it... Lore ipsum...",
-		'ingredients':[{ 
+		'ingredients':[{
 			'name':'ingredient 1',
 			'quantity':1,
 			'unit':'pieces',
@@ -251,7 +316,7 @@ var DinnerModel = function() {
 		'type':'main dish',
 		'image':'meatballs.jpg',
 		'description':"Here is how you make it... Lore ipsum...",
-		'ingredients':[{ 
+		'ingredients':[{
 			'name':'ingredient 1',
 			'quantity':2,
 			'unit':'pieces',
@@ -273,7 +338,7 @@ var DinnerModel = function() {
 		'type':'main dish',
 		'image':'meatballs.jpg',
 		'description':"Here is how you make it... Lore ipsum...",
-		'ingredients':[{ 
+		'ingredients':[{
 			'name':'ingredient 1',
 			'quantity':1,
 			'unit':'pieces',
@@ -295,7 +360,7 @@ var DinnerModel = function() {
 		'type':'dessert',
 		'image':'icecream.jpg',
 		'description':"Here is how you make it... Lore ipsum...",
-		'ingredients':[{ 
+		'ingredients':[{
 			'name':'ice cream',
 			'quantity':100,
 			'unit':'ml',
@@ -307,7 +372,7 @@ var DinnerModel = function() {
 		'type':'dessert',
 		'image':'icecream.jpg',
 		'description':"Here is how you make it... Lore ipsum...",
-		'ingredients':[{ 
+		'ingredients':[{
 			'name':'ice cream',
 			'quantity':100,
 			'unit':'ml',
@@ -319,7 +384,7 @@ var DinnerModel = function() {
 		'type':'dessert',
 		'image':'icecream.jpg',
 		'description':"Here is how you make it... Lore ipsum...",
-		'ingredients':[{ 
+		'ingredients':[{
 			'name':'ice cream',
 			'quantity':100,
 			'unit':'ml',
