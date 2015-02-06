@@ -50,7 +50,7 @@ var DinnerModel = function() {
         }
 
         if (this._menu['main dish']) {
-            var dish_id = ._menu['main dish'].id;
+            var dish_id = this._menu['main dish'].id;
             ingredients.concat(this._getIngredientsFromDish(dish_id));
         }
 
