@@ -13,17 +13,20 @@
         <h4></h4>
         <p></p>
         <label></label>
-        <button></button>
+        <button class="btn"></button>
     </div>
 </section>
 
 <section class="container-fluid">
-    <div id="left-summary" class="col-md-4">
-        <h5></h5>
-        <label for="guests"></label>
-        <input type="number" min="0">
-        <table>
+    <div id="left-summary" class="col-md-3">
+        <div id="above-table">
+            <h5></h5>
+            <label for="guests"></label>
+            <input id="guests" type="number" min="0">
+        </div>
+        <table class="table">
             <thead>
+                <td></td>
                 <td></td>
                 <td></td>
             </thead>
@@ -37,9 +40,10 @@
             <tfoot>
                 <td></td>
                 <td></td>
+                <td>asdasd</td>
             </tfoot>
         </table>
-        <button id="confirm-dinner"></button>
+        <button class="btn center-block" id="confirm-dinner"></button>
     </div>
     <div class="col-md-8">
         <div id="select-dish">
@@ -47,10 +51,10 @@
             <form>
                 <div class="search">
                     <input type="search">
-                    <input type="submit">
+                    <button class="btn"></button>
                 </div>
                 <div class="dish-type">
-                    <input type="select">
+                    <select name="dish-type"></select>
                 </div>
             </form>
         </div>

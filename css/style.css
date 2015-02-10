@@ -6,10 +6,28 @@ body,html {
     font-family: "Balsamiq Sans", Verdana, Tahoma;
 }
 
+section {
+    padding: 0 !important;
+}
+
+button{
+    background-color: #FA8423;
+    border: 1px solid black !important;
+    border-radius: 2px !important;
+    -webkit-box-shadow: 2px 2px 0 black;
+    -moz-box-shadow:  2px 2px 0 black;
+    box-shadow:  2px 2px 0 black;
+}
+
+
+/* Header */
+
 header {
     background: #ccc;
     padding-top: 5px;
 }
+
+
 
 #header h1 {
     font-size: 2em;
@@ -24,39 +42,62 @@ header {
     margin-top: 13px;
 }
 
-header{
+
+
+header {
     border: 1px solid black;
 }
 
-table{
-    width: 100%;
-}
-
-label{
-
-}
 
 #left-summary {
-    padding-left:5px !important;
+    padding:0 !important;
     border: 1px solid black;
 }
 
-
-
-
-button{
-    background-color: #FA8423;
+#left-summary #above-table{
+    padding-left: 8px
 }
 
-td {
+#left-summary table{
+
+}
+
+#left-summary #currentRow{
+    
+}
+
+#left-summary tbody{
+    border-bottom: 1px solid black;
+}
+
+
+#left-summary thead td {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+#left-summary tfoot td {
+    color: #9C5013;
+}
+
+#left-summary tbody td {
     color: #9C5013;
     padding-right: 20px;
     padding-top:4px;
     padding-bottom: 4px;
+    padding-left:10px
 }
 
 #guests{
-    width:80px;
+    width:40px;
+}
+
+label{
+    font-weight: normal;
+}
+
+h5{
+    font-weight: bold;
 }
 
 thead{
@@ -64,9 +105,4 @@ thead{
     background-color: #ccc;
     border-top: 1px solid black;
     border-bottom: 1px solid black;
-}
-
-th{
-    padding: 0 !important;
-    margin: 0 !important;
 }
