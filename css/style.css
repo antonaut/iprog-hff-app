@@ -13,10 +13,8 @@ header {
 
 #header h1 {
     font-size: 2em;
-    margin-top:0 ;
-    margin-bottom: 0;
-    margin-right: 12px;
-    margin-left: 0;
+
+    margin: 0 12px 0 0;
     float: left;
 }
 
@@ -24,4 +22,51 @@ header {
     font-size: 0.6em;
     float: left;
     margin-top: 13px;
+}
+
+header{
+    border: 1px solid black;
+}
+
+table{
+    width: 100%;
+}
+
+label{
+
+}
+
+#left-summary {
+    padding-left:5px !important;
+    border: 1px solid black;
+}
+
+
+
+
+button{
+    background-color: #FA8423;
+}
+
+td {
+    color: #9C5013;
+    padding-right: 20px;
+    padding-top:4px;
+    padding-bottom: 4px;
+}
+
+#guests{
+    width:80px;
+}
+
+thead{
+    color: #000;
+    background-color: #ccc;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+th{
+    padding: 0 !important;
+    margin: 0 !important;
 }
