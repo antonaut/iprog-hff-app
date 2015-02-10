@@ -1,0 +1,27 @@
+@font-face {
+    font-family: "Balsamiq Sans";
+    src: url(fonts/BalsamiqSansRegular.ttf) format("truetype");
+}
+body,html {
+    font-family: "Balsamiq Sans", Verdana, Tahoma;
+}
+
+header {
+    background: #ccc;
+    padding-top: 5px;
+}
+
+#header h1 {
+    font-size: 2em;
+    margin-top:0 ;
+    margin-bottom: 0;
+    margin-right: 12px;
+    margin-left: 0;
+    float: left;
+}
+
+#header p {
+    font-size: 0.6em;
+    float: left;
+    margin-top: 13px;
+}
