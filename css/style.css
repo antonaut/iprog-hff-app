@@ -2,8 +2,9 @@
     font-family: "Balsamiq Sans";
     src: url(fonts/BalsamiqSansRegular.ttf) format("truetype");
 }
-body,html {
+body,html, .row, .container-fluid {
     font-family: "Balsamiq Sans", Verdana, Tahoma;
+    height: 100%;
 }
 
 section {
@@ -19,6 +20,9 @@ button{
     box-shadow:  2px 2px 0 black;
 }
 
+#wrap  {
+    margin-top: 48px !important;
+}
 
 /* Header */
 
@@ -31,27 +35,44 @@ header {
 
 #header h1 {
     font-size: 2em;
-
     margin: 0 12px 0 0;
     float: left;
+    color: #000000 !important;
 }
 
-#header p {
-    font-size: 0.6em;
-    float: left;
-    margin-top: 13px;
+#header .tagline {
+    color: black;
 }
 
 
 
 header {
-    border: 1px solid black;
+    border-bottom: 1px solid black !important;
+}
+
+.front-page {
+    background: url('../images/bg.png');
+    overflow: hidden;
+}
+
+#intro {
+    margin-top: 40px;
+    margin-left: 20px;
+    padding: 15px;
+    border-radius: 3px 3px;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+#intro label, #intro button {
+    float: right;
+    margin-right: 10px;
 }
 
 
 #left-summary {
     padding:0 !important;
     border: 1px solid black;
+    height: 100%;
 }
 
 #left-summary #above-table{
@@ -63,7 +84,7 @@ header {
 }
 
 #left-summary #currentRow{
-    
+
 }
 
 #left-summary tbody{
@@ -88,21 +109,54 @@ header {
     padding-left:10px
 }
 
-#guests{
+#left-summary #guests{
     width:40px;
 }
 
-label{
+#left-summary label{
     font-weight: normal;
 }
 
-h5{
+#left-summary h5{
     font-weight: bold;
 }
 
-thead{
+#left-summary thead{
     color: #000;
     background-color: #ccc;
     border-top: 1px solid black;
     border-bottom: 1px solid black;
+}
+
+#right-panel .search, #right-panel #dish-type {
+    float: left;
+    margin-right: 50px;
+}
+
+#select-dish {
+    background-color: #FFB070;
+    height: 100px;
+    padding: 15px;
+}
+#select-dish #dish-type{
+    width: 150px;
+}
+
+#dish-list .dish {
+    margin-top: 10px;
+}
+
+#dish-list .dish p {
+    margin-top: 10px;
+    font-size: 0.8em;
+}
+
+#dish-list .dish img {
+    width: 140px;
+    height: 140px;
+}
+
+#dish-list .dish figcaption{
+    text-align: center;
+    font-weight: bold;
 }

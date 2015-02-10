@@ -1,73 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 <body>
-<header class="container-fluid">
+<header class="navbar navbar-default navbar-fixed-top">
     <div id="header">
-        <h1 class="logo"></h1>
-        <p></p>
+        <h1 class="navbar-brand logo"></h1>
+        <p class="navbar-text tagline"></p>
     </div>
 </header>
 
-<section class="container-fluid" style="display:none">
-    <div id="intro" class="col-md-6">
-        <h4></h4>
-        <p></p>
-        <label></label>
-        <button class="btn"></button>
-    </div>
-</section>
+<div id="wrap" class="container-fluid">
+    <section class="row front-page">
+        <div id="intro" class="col-md-6">
+            <h4></h4>
 
-<section class="container-fluid">
-    <div id="left-summary" class="col-md-3">
-        <div id="above-table">
-            <h5></h5>
-            <label for="guests"></label>
-            <input id="guests" type="number" min="0">
+            <p></p>
+            <button class="btn"></button>
+            <label></label>
         </div>
-        <table class="table">
-            <thead>
+    </section>
+
+    <section class="row" style="display:none">
+        <div id="left-summary" class="col-md-3 sidebar">
+            <div id="above-table">
+                <h5></h5>
+                <label for="guests"></label>
+                <input id="guests" type="number" min="0">
+            </div>
+            <table class="table">
+                <thead>
                 <td></td>
                 <td></td>
                 <td></td>
-            </thead>
-            <tbody>
+                </thead>
+                <tbody>
                 <tr>
                     <td>4</td>
                     <td>Lasagne</td>
                     <td>72.20</td>
                 </tr>
-            </tbody>
-            <tfoot>
+                </tbody>
+                <tfoot>
                 <td></td>
                 <td></td>
                 <td>asdasd</td>
-            </tfoot>
-        </table>
-        <button class="btn center-block" id="confirm-dinner"></button>
-    </div>
-    <div class="col-md-8">
-        <div id="select-dish">
-            <h5></h5>
-            <form>
-                <div class="search">
-                    <input type="search">
-                    <button class="btn"></button>
-                </div>
-                <div class="dish-type">
-                    <select name="dish-type"></select>
-                </div>
-            </form>
+                </tfoot>
+            </table>
+            <button class="btn center-block" id="confirm-dinner"></button>
         </div>
-        <div id="dish-list">
-            <div class="dish">
-                <img src="" alt="">
-                <label for=""></label>
-                <p></p>
+        <div id="right-panel" class="offset-md-3 col-md-9">
+            <div id="select-dish" class="row">
+                <h5></h5>
+                <form>
+                    <div class="search">
+                        <input type="search">
+                        <button class="btn"></button>
+                    </div>
+                    <div class="dish-type">
+                        <select id="dish-type"></select>
+                    </div>
+                </form>
+            </div>
+            <div id="dish-list">
+                <div class="dish col-md-2">
+                    <img id="icecream" class="img-thumbnail" src="images/icecream.jpg" alt="">
+                    <figcaption>Icecream</figcaption>
+                    <p>Icecream is good for you...</p>
+                </div>
             </div>
         </div>
-    </div>
-</section>
-
+    </section>
+</div>
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery.js"></script>
 <!-- Bootstrap JavaScript, needed if you want for instance tabs, models, popovers etc. -->
