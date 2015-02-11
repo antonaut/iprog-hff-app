@@ -2,13 +2,19 @@
     font-family: "Balsamiq Sans";
     src: url(fonts/BalsamiqSansRegular.ttf) format("truetype");
 }
-body,html, .row, .container-fluid {
+
+body {
+  overflow: hidden;
+}
+
+body, html, .row, .container-fluid {
     font-family: "Balsamiq Sans", Verdana, Tahoma;
     height: 100%;
 }
 
 section {
     padding: 0 !important;
+    overflow: auto;
 }
 
 button{
