@@ -205,6 +205,7 @@ header {
     margin-top: 5px;
     background-color: #FFB070;
     border-bottom: 1px solid black;
+    clear:both;
 }
 
 .info-bar button {
@@ -223,4 +224,31 @@ header {
 
 .summary .print-btn {
     width: 100%;
+}
+
+#mydinner{
+    margin-top: 70px;
+}
+
+
+#instructions .dish-image, #instructions .dish-name{
+    float:left;
+}
+
+#instructions .dish-image{
+    margin-right: 10px;
+
+}
+
+#instructions .dish-info{
+    clear:left;
+}
+
+#instructions #dish-info-holder{
+
+}
+
+.margin-down{
+    margin-bottom:30px;
+
 }
