@@ -20,6 +20,7 @@ button{
     box-shadow:  2px 2px 0 black;
 }
 
+
 #wrap  {
     margin-top: 48px !important;
 }
@@ -31,6 +32,9 @@ header {
     padding-top: 5px;
 }
 
+h5{
+    font-weight: bold;
+}
 
 
 #header h1 {
@@ -117,10 +121,6 @@ header {
     font-weight: normal;
 }
 
-#left-summary h5{
-    font-weight: bold;
-}
-
 #left-summary thead{
     color: #000;
     background-color: #ccc;
@@ -128,7 +128,47 @@ header {
     border-bottom: 1px solid black;
 }
 
-#right-panel .search, #right-panel #dish-type {
+#single-dish {
+    margin-top: 20px;
+}
+
+#single-dish #ingredient-list{
+    background-color: #FFB070;
+    padding:10px;
+}
+
+#single-dish p{
+    width: 100%;
+}
+
+#dish-details img{
+    width:60%;
+    height: auto;
+}
+
+#dish-details h5{
+    font-size: 2em;
+}
+
+#dish-details button{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#ingredient-list thead td{
+    font-weight: bold;
+}
+
+#ingredient-list tbody td{
+    padding-left: 10px;
+    border-top: 1px solid black;
+}
+
+#ingredient-list tfoot td{
+    border-top: 1px solid black;
+}
+
+#dish-form .search, #dish-form #dish-type {
     float: left;
     margin-right: 50px;
 }
@@ -159,4 +199,28 @@ header {
 #dish-list .dish figcaption{
     text-align: center;
     font-weight: bold;
+}
+
+.info-bar {
+    margin-top: 5px;
+    background-color: #FFB070;
+    border-bottom: 1px solid black;
+}
+
+.info-bar button {
+    margin-top: 20px;
+    margin-right: 23px;
+}
+
+.summary .total {
+    border-left: 1px solid black;
+}
+
+.summary .dish-summary {
+    height: 200px;
+    margin-bottom: 20px;
+}
+
+.summary .print-btn {
+    width: 100%;
 }
