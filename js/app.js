@@ -16,7 +16,7 @@ requirejs([
 
 ], function (
     DinnerModel,
-    lang_en,
+    language,
     ExampleView,
     HeaderView,
     IntroView,
@@ -26,7 +26,6 @@ requirejs([
 
     //We instantiate our model
     var model = new DinnerModel("My awesome birthday!", 25);
-    var language = lang_en;
     console.log(model.name);
     window.m = model;
 
