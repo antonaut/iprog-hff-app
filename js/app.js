@@ -7,12 +7,13 @@ requirejs.config({
 
 requirejs([
     'model/dinner',
-    'model/lang_en',
+    'model/lang_sv',
     'view/example',
     'view/header',
     'view/intro',
     'view/left-summary',
-    'view/select-dish'
+    'view/select-dish',
+    'view/summary-overview'
 
 ], function (
     DinnerModel,
@@ -21,13 +22,16 @@ requirejs([
     HeaderView,
     IntroView,
     LeftSummaryView,
-    SelectDishView
+    SelectDishView,
+    SummaryOverviewView
 ) {
 
     //We instantiate our model
     var model = new DinnerModel("My awesome birthday!", 25);
-    console.log(model.name);
-    window.m = model;
+
+    model.addDishToMenu(1); // Toast as starter
+    model.addDishToMenu(100); // Meatballs as main dish
+    model.addDishToMenu(201); // Ice cream as dessert
 
     //And create the needed controllers and views
     var exampleView = new ExampleView($("#exampleView"));
@@ -35,4 +39,5 @@ requirejs([
     var introView = new IntroView($("#intro"), language);
     var leftSummary = new LeftSummaryView($("#left-summary"), language);
     var selectDish = new SelectDishView($("#select-dish"), language);
+    var summaryOverview = new SummaryOverviewView($(".summary"), language, model);
 });

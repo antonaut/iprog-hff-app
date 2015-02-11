@@ -5,6 +5,8 @@
 define([], function () {
 
     language = {};
+    language.general = {};
+    language.general.currency = function(crowns) { return "SEK " + crowns; };
 
     language.header = {};
     language.header.HEADER = "HOMELETTE";
@@ -29,6 +31,7 @@ define([], function () {
     language.label.BACK_TO_SELECT = "Tillbaka till välj rätt";
     language.label.BACK_TO_EDIT = "Tillbaka till ändra middag";
     language.label.PRINT_RECIPE = "Skriv ut recept";
+    language.label.PRINT_FULL_RECIPE = "Skriv ut alla recept";
 
     language.dishlist = {};
     language.dishlist.HEADER = "Min middag";
@@ -36,19 +39,26 @@ define([], function () {
     language.dishlist.DISH_NAME = "Middagsnamn";
     language.dishlist.COST = "Kostnad";
     language.dishlist.PENDING = "Vald rätt";
-    language.dishlist.currency = function(crowns) { return "SEK " + crowns; };
 
     language.selectdish = {};
     language.selectdish.HEADER = "Välj rätt";
     language.selectdish.PLACEHOLDER = "Mmm... Pannkakor!";
 
     language.dishdetails = {};
-    language.dishdetails.ingredients_header = function (numberOfPeople) {return "INGREDIENSER FÖR " + numberOfPeople + " GÄSTER";};
+    language.dishdetails.ingredients_header = function (numberOfPeople) {
+        if (numberOfPeople == 1) {
+            return "INGREDIENSER FÖR " + numberOfPeople + " GÄST";
+        } else {
+            return "INGREDIENSER FÖR " + numberOfPeople + " GÄSTER";
+        };
+    };
     language.dishdetails.PREPARATION_HEADER = "Förberedelse";
 
     language.dinner_overview= {};
     language.dinner_overview.header =  function (numberOfPeople) {return "Min middag: "+numberOfPeople+ " GÄSTER";};
 
+    language.summary_overview = {};
+    language.summary_overview.TOTAL_EQ = "TOTALT:";
 
     return language;
 });

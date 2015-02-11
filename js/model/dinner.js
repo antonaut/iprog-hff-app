@@ -66,20 +66,20 @@ define([], function () {
 // Returns all ingredients for all the dishes on the menu.
     DinnerModel.prototype.getAllIngredients = function () {
         var ingredients = [];
-
+        console.log(this.menu);
         if (this.menu["starter"]) {
             var dish_id = this.menu["starter"].id;
-            ingredients.concat(this._getIngredientsFromDish(dish_id));
+            ingredients = ingredients.concat(this._getIngredientsFromDish(dish_id));
         }
 
         if (this.menu["main dish"]) {
             var dish_id = this.menu["main dish"].id;
-            ingredients.concat(this._getIngredientsFromDish(dish_id));
+            ingredients = ingredients.concat(this._getIngredientsFromDish(dish_id));
         }
 
         if (this.menu["dessert"]) {
             var dish_id = this.menu["dessert"].id;
-            ingredients.concat(this._getIngredientsFromDish(dish_id));
+            ingredients = ingredients.concat(this._getIngredientsFromDish(dish_id));
         }
 
         return ingredients;
@@ -101,9 +101,22 @@ define([], function () {
 // Returns the total price of the menu (all the ingredients multiplied by number of guests).
     DinnerModel.prototype.getTotalMenuPrice = function () {
         var ingredients = this.getAllIngredients();
-        return ingredients.reduce(function (x, y) {
-            return x["price"] + y["price"];
-        });
+        return this.getIngredientsPrice(ingredients);
+    };
+
+    DinnerModel.prototype.getIngredientsPrice = function (ingredients) {
+        var defaultSum = 0;
+        if (!ingredients || !Object.hasOwnProperty("length", ingredients)) {
+            // How should one type check for arrays?
+            throw 'Unexpected type of ingredients: ' + ingredients;
+        }
+        return ingredients.reduce(function (prev, current) {
+            return prev + current["price"];
+        }, defaultSum);
+    };
+
+    DinnerModel.prototype.getDishPrice = function (id) {
+        return this.getIngredientsPrice(this.getDish(id).ingredients);
     };
 
 // Adds the passed dish to the menu. If the dish of that type already exists on the menu
@@ -164,6 +177,7 @@ define([], function () {
             }
         }
     };
+
 
 
 // The dishes variable contains an array of all the
