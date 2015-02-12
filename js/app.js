@@ -13,7 +13,11 @@ requirejs([
     'view/intro',
     'view/left-summary',
     'view/select-dish',
-    'view/summary-overview'
+    'view/summary-overview',
+    'view/my-dinner',
+    'view/instructions',
+    'view/single-dish',
+    'controller/page'
 
 ], function (
     DinnerModel,
@@ -23,21 +27,39 @@ requirejs([
     IntroView,
     LeftSummaryView,
     SelectDishView,
-    SummaryOverviewView
+    SummaryOverviewView,
+    MyDinnerView,
+    InstructionsView,
+    SingleDishView,
+    PageController
 ) {
 
     //We instantiate our model
     var model = new DinnerModel("My awesome birthday!", 25);
 
+    model.selectedDish=1;
     model.addDishToMenu(1); // Toast as starter
     model.addDishToMenu(100); // Meatballs as main dish
     model.addDishToMenu(201); // Ice cream as dessert
 
     //And create the needed controllers and views
     var exampleView = new ExampleView($("#exampleView"));
-    var headerView = new HeaderView($("#header"), language);
+    var headerView = new HeaderView($("#header"), language, model);
     var introView = new IntroView($("#intro"), language);
-    var leftSummary = new LeftSummaryView($("#left-summary"), language);
-    var selectDish = new SelectDishView($("#select-dish"), language);
+    var leftSummary = new LeftSummaryView($("#left-summary"), language, model);
+    var selectDish = new SelectDishView($("#select-dish"), language, model);
+    var myDinnerView = new MyDinnerView($("#mydinner"), language);
     var summaryOverview = new SummaryOverviewView($(".summary"), language, model);
+    var instructionsView = new InstructionsView($("#instructions"),language, model);
+    var singleDishView = new SingleDishView($('#single-dish'),language,model);
+
+    var pageController = new PageController();
+
+    window.onkeypress = (function(evt){
+        console.log(evt);
+        if (evt.keyCode == 32) {
+            pageController.next();
+        }
+        evt.preventDefault();
+    });
 });

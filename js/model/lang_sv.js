@@ -33,12 +33,12 @@ define([], function () {
     language.label.PRINT_RECIPE = "Skriv ut recept";
     language.label.PRINT_FULL_RECIPE = "Skriv ut alla recept";
 
-    language.dishlist = {};
-    language.dishlist.HEADER = "Min middag";
-    language.dishlist.PEOPLE = "Gäster";
-    language.dishlist.DISH_NAME = "Middagsnamn";
-    language.dishlist.COST = "Kostnad";
-    language.dishlist.PENDING = "Vald rätt";
+    language.mydinner = {};
+    language.mydinner.HEADER = "Min middag";
+    language.mydinner.PEOPLE = "Gäster";
+    language.mydinner.DISH_NAME = "Namn på rätt";
+    language.mydinner.COST = "Kostnad";
+    language.mydinner.PENDING = "Vald rätt";
 
     language.selectdish = {};
     language.selectdish.HEADER = "Välj rätt";

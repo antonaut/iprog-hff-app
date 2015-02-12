@@ -3,7 +3,7 @@ define([], function () {
 // DinnerModel Object constructor
     var DinnerModel = function (name, guests) {
         this._name = name;
-        this.guests = guests; // Number of guests at party
+        this._guests = guests; // Number of guests at party
         this._selectedDish = null; // The currently selected dish
 
         // The dinner menu of the party
@@ -66,7 +66,6 @@ define([], function () {
 // Returns all ingredients for all the dishes on the menu.
     DinnerModel.prototype.getAllIngredients = function () {
         var ingredients = [];
-        console.log(this.menu);
         if (this.menu["starter"]) {
             var dish_id = this.menu["starter"].id;
             ingredients = ingredients.concat(this._getIngredientsFromDish(dish_id));

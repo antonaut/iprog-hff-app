@@ -30,16 +30,16 @@ define([], function () {
     language.label.CONFIRM_DINNER = "Confirm dinner";
     language.label.CONFIRM_DISH = "Confirm dish";
     language.label.BACK_TO_SELECT = "Back to select dish";
-    language.label.BACK_TO_EDIT = "Back to edit dinner";
+    language.label.BACK_TO_EDIT = "Go back to edit dinner";
     language.label.PRINT_RECIPE = "Print recipe";
     language.label.PRINT_FULL_RECIPE = "Print full recipe";
 
-    language.dishlist = {};
-    language.dishlist.HEADER = "My Dinner";
-    language.dishlist.PEOPLE = "People";
-    language.dishlist.DISH_NAME = "Dish name";
-    language.dishlist.COST = "Cost";
-    language.dishlist.PENDING = "Pending";
+    language.mydinner = {};
+    language.mydinner.HEADER = "My Dinner";
+    language.mydinner.PEOPLE = "People";
+    language.mydinner.DISH_NAME = "Dish name";
+    language.mydinner.COST = "Cost";
+    language.mydinner.PENDING = "Pending";
 
 
     language.selectdish = {};
