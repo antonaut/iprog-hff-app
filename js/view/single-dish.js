@@ -20,8 +20,7 @@ define([], function() {
 
 
     var addMenuElements = function(tbody,dish, lang, model) {
-        tbody.html("");
-        console.log(dish);
+        tbody.html("");        
         for (idx in dish.ingredients) {
             var ingredient = dish.ingredients[idx];
             if (!ingredient) {continue;}

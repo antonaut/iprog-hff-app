@@ -56,7 +56,6 @@ requirejs([
     var pageController = new PageController();
 
     window.onkeypress = (function(evt){
-        console.log(evt);
         if (evt.keyCode == 32) {
             pageController.next();
         }

@@ -17,7 +17,7 @@ section {
     overflow: auto;
 }
 
-button{
+button {
     background-color: #FA8423;
     border: 1px solid black !important;
     border-radius: 2px !important;
@@ -28,10 +28,10 @@ button{
 
 
 #wrap  {
-    margin-top: 56px !important;
+    margin-top: 88px !important;
 }
 
-.row{
+.row {
     overflow-y: auto;
  }
 
@@ -85,7 +85,6 @@ header {
 
 #left-summary {
     padding:0 !important;
-    border-right: 1px solid black;
     height: 100%;
 }
 
@@ -93,15 +92,15 @@ header {
     padding-left: 8px
 }
 
-#left-summary table{
+#left-summary table {
 
 }
 
-#left-summary #currentRow{
+#left-summary #currentRow {
 
 }
 
-#left-summary tbody{
+#left-summary tbody {
     border-bottom: 1px solid black;
 }
 
@@ -138,8 +137,12 @@ header {
     border-bottom: 1px solid black;
 }
 
+.right-panel {
+    border-left: 1px solid black;
+    height: 100%;
+}
+
 #single-dish {
-    margin-top: 20px;
 }
 
 #single-dish #ingredient-list{
@@ -147,7 +150,7 @@ header {
     padding:10px;
 }
 
-#single-dish p{
+#single-dish p {
     width: 100%;
 }
 
