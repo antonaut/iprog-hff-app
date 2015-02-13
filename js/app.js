@@ -47,7 +47,7 @@ requirejs([
     var headerView = new HeaderView($("#header"), language, model);
     var introView = new IntroView($("#intro"), language);
     var leftSummary = new LeftSummaryView($("#left-summary"), language, model);
-    var selectDish = new SelectDishView($("#select-dish"), language, model);
+    var selectDish = new SelectDishView($("#dish-form"), language, model);
     var myDinnerView = new MyDinnerView($("#mydinner"), language);
     var summaryOverview = new SummaryOverviewView($(".summary"), language, model);
     var instructionsView = new InstructionsView($("#instructions"),language, model);

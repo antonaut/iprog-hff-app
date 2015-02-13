@@ -32,7 +32,17 @@ define([], function(){
                     $('#mydinner').fadeIn();
                 },
                 'hide': function() {
+                    $('.summary').fadeOut();
+                }
+            },
+            {
+                'show': function() {
+                    $('#instructions').fadeIn();
+                },
+                'hide': function() {
                     $('#mydinner').fadeOut();
+                    $('.summary').show();
+                    $('#instructions').hide();
                 }
             }
         ]

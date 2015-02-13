@@ -28,8 +28,12 @@ button{
 
 
 #wrap  {
-    margin-top: 88px !important;
+    margin-top: 56px !important;
 }
+
+.row{
+    overflow-y: auto;
+ }
 
 /* Header */
 
@@ -145,6 +149,10 @@ header {
 
 #single-dish p{
     width: 100%;
+}
+
+.single-dish-preparation{
+    margin-bottom:100px;
 }
 
 #dish-details img{
