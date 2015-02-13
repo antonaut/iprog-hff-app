@@ -15,7 +15,7 @@ define([], function () {
 
     language.intro = {};
     language.intro.HEADER = "A home dinner service";
-    language.intro.DESC = "Muutakin suuresta maailman ja no jokainen. Jolla ei mutta tahan ai he. En ne katsoi paahan kerran ai tyhjan hauska he. Huulilla jos oma kaikkien israelin nyt han saavansa. Rakentaa pelastaa metsassa vaativat ole luo jokainen. Kullakin ruuhessa te nostivat tarkkaan ja varmasti se jo vaikenee. Huumannut kuitenkin millainen et ai jo sylyyksen kastettua ikkunasta. ";
+    language.intro.DESC = "On it differed repeated wandered required in. Then girl neat why yet knew rose spot. Moreover property we he kindness greatest be oh striking laughter. In me he at collecting affronting principles apartments. Has visitor law attacks pretend you calling own excited painted. Contented attending smallness it oh ye unwilling. Turned favour man two but lovers. Suffer should if waited common person little oh. Improved civility graceful sex few smallest screened settling. Likely active her warmly has.  ";
 
     language.dishinfo = {};
     language.dishinfo.STARTER = "Starter";

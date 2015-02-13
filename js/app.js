@@ -7,7 +7,7 @@ requirejs.config({
 
 requirejs([
     'model/dinner',
-    'model/lang_sv',
+    'model/lang_en',
     'view/example',
     'view/header',
     'view/intro',
