@@ -44,13 +44,6 @@ requirejs([
     model.addDishToMenu(100); // Meatballs as main dish
     model.addDishToMenu(201); // Ice cream as dessert
 
-    Object.observe(model, function(changes) {
-        changes.forEach(function(change) {
-            // Any time name or title change, update the greeting
-            console.log(change);
-        });
-    });
-
     var pageController = new PageController(model);
     var selectDishController = new SelectDishController(model);
 
@@ -86,7 +79,7 @@ requirejs([
     window.onkeypress = (function(evt){
         if (evt.keyCode == 32) {
             pageController.next();
+            evt.preventDefault();
         }
-        evt.preventDefault();
     });
 });
