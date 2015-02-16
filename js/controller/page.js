@@ -1,55 +1,93 @@
 /**
  * Created by Fredrik on 2015-02-12.
  */
-define([], function(){
-    var PageController = function() {
-        this.pages = [
-            {
-                'show': function() {
+define([], function () {
+    var PageController = function (model) {
+        this.model = model;
+
+        this.pages = {
+            'front-page': {
+                'show': function () {
                     $(".front-page").fadeIn();
-                },
-                'hide': function() {
+                }
+
+                ,
+                'hide': function () {
                     $(".front-page").fadeOut();
                 }
-            },{
-                'show': function() {
+            }
+            ,
+            'select-dish': {
+                'show': function () {
                     $("#dish-form").fadeIn();
                     $(".dish-selection").fadeIn();
-                },
-                'hide': function() {
+                }
+
+                ,
+                'hide': function () {
                     $("#dish-form").fadeOut();
                 }
-            },{
-                'show': function() {
+            }
+            ,
+            'single-dish': {
+                'show': function () {
                     $('#single-dish').fadeIn();
-                },
+                }
+
+                ,
                 'hide': function () {
                     $('#single-dish').fadeOut();
                     $('.dish-selection').fadeOut();
                 }
-            },{
-                'show': function() {
+            }
+            ,
+            'mydinner': {
+                'show': function () {
                     $('#mydinner').fadeIn();
-                },
-                'hide': function() {
+                }
+
+                ,
+                'hide': function () {
                     $('.summary').fadeOut();
                 }
-            },
-            {
-                'show': function() {
+            }
+            ,
+            'instructions': {
+                'show': function () {
                     $('#instructions').fadeIn();
-                },
-                'hide': function() {
+                }
+
+                ,
+                'hide': function () {
                     $('#mydinner').fadeOut();
                     $('.summary').show();
                     $('#instructions').hide();
                 }
             }
-        ]
-        this.active = 0;
+        };
+        this.last = 'front-page';
+
+        $('#intro button').click((function () {
+            this.show("select-dish");
+        }).bind(this));
     };
 
-    PageController.prototype.next = function() {
+    PageController.prototype.show = function(page_id) {
+        this.hideLast();
+        this.pages[page_id].show();
+        this.last = page_id;
+    };
+
+    PageController.prototype.hideLast = function() {
+        this.pages[this.last].hide();
+    };
+
+    PageController.prototype.goToSingleDish = function () {
+        this.show('single-dish');
+    };
+
+
+    PageController.prototype.next = function () {
 
         this.pages[this.active]['hide']();
         if (this.active == this.pages.length - 1) {
@@ -59,6 +97,7 @@ define([], function(){
         }
         this.pages[this.active]['show']();
     };
+
 
     return PageController;
 });

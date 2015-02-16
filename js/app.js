@@ -17,7 +17,8 @@ requirejs([
     'view/my-dinner',
     'view/instructions',
     'view/single-dish',
-    'controller/page'
+    'controller/page',
+    'controller/selectDish'
 
 ], function (
     DinnerModel,
@@ -31,7 +32,8 @@ requirejs([
     MyDinnerView,
     InstructionsView,
     SingleDishView,
-    PageController
+    PageController,
+    SelectDishController
 ) {
 
     //We instantiate our model
@@ -42,18 +44,44 @@ requirejs([
     model.addDishToMenu(100); // Meatballs as main dish
     model.addDishToMenu(201); // Ice cream as dessert
 
+    Object.observe(model, function(changes) {
+        changes.forEach(function(change) {
+            // Any time name or title change, update the greeting
+            console.log(change);
+        });
+    });
+
+    var pageController = new PageController(model);
+    var selectDishController = new SelectDishController(model);
+
+
     //And create the needed controllers and views
     var exampleView = new ExampleView($("#exampleView"));
     var headerView = new HeaderView($("#header"), language, model);
     var introView = new IntroView($("#intro"), language);
     var leftSummary = new LeftSummaryView($("#left-summary"), language, model);
-    var selectDish = new SelectDishView($("#dish-form"), language, model);
+    var selectDish = new SelectDishView($("#dish-form"), language, model, selectDishController, pageController);
     var myDinnerView = new MyDinnerView($("#mydinner"), language);
     var summaryOverview = new SummaryOverviewView($(".summary"), language, model);
     var instructionsView = new InstructionsView($("#instructions"),language, model);
     var singleDishView = new SingleDishView($('#single-dish'),language,model);
 
-    var pageController = new PageController();
+
+    // Add cross-references
+    selectDishController.attachView(selectDish);
+
+    model.addObserver(function(){instructionsView.update();});
+    model.addObserver(function(){leftSummary.update();});
+    model.addObserver(function(){selectDish.update();});
+    model.addObserver(function(){singleDishView.update();});
+    model.addObserver(function(){summaryOverview.update();});
+
+    model.addDishToMenu(101);
+    model.guests=22;
+
+    model.notifyObservers();
+
+
 
     window.onkeypress = (function(evt){
         if (evt.keyCode == 32) {

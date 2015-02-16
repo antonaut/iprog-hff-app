@@ -3,6 +3,9 @@
  */
 define([], function () {
     var intro = function (container, lang) {
+        this.container=container;
+        this.lang=lang;
+
         container.find("h4").html(lang.intro.HEADER);
         container.find("p").html(lang.intro.DESC);
         container.find("label").html(lang.label.START_QUICKLY);

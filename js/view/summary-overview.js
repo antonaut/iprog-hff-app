@@ -1,17 +1,25 @@
 define([], function() {
 
     var SummaryOverviewView = function(container, lang, model) {
-        var row = container.find(".row");
+        this.container = container;
+        this.lang = lang;
+        this.model = model;
+
+        this.update();
+    };
+
+    SummaryOverviewView.prototype.update = function(){
+        var row = this.container.find(".row");
         row.html("");
-        for (key in model.menu) {
-            var dish = model.menu[key];
+        for (key in this.model.menu) {
+            var dish = this.model.menu[key];
             if (!dish) {continue;} // dish might be null
             row.append(createDishElement('images/' + dish.image,
-                                         model.getIngredientsPrice(dish["ingredients"]), lang));
+                this.model.getIngredientsPrice(dish["ingredients"]), this.lang));
         }
-        row.append(createTotalElement(model.getTotalMenuPrice(), lang));
+        row.append(createTotalElement(this.model.getTotalMenuPrice(), this.lang));
 
-        container.find(".print-btn").html(lang.label.PRINT_FULL_RECIPE);
+        this.container.find(".print-btn").html(this.lang.label.PRINT_FULL_RECIPE);
     };
 
     var createDishElement = function(imgSrc, price, lang) {

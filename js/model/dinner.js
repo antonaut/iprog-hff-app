@@ -12,7 +12,19 @@ define([], function () {
             "main dish": null,
             "dessert": null
         };
+
+        this._observers = [];
     };
+
+    DinnerModel.prototype.addObserver = function(callback) {
+        this._observers.push(callback);
+    };
+
+    DinnerModel.prototype.notifyObservers = function(obj) {
+        for(index in this._observers){
+            this._observers[index](obj); // Call callback
+        }
+    }
 
     Object.defineProperty(DinnerModel.prototype, "name", {
         get: function () {
@@ -44,6 +56,7 @@ define([], function () {
             return this._selectedDish;
         },
         set: function (selectedDish) {
+            console.info("Dish set to ",selectedDish);
             this._selectedDish = selectedDish;
         }
     });

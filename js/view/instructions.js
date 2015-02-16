@@ -4,18 +4,11 @@
 define([], function() {
 
     var InstructionsView = function(container, lang, model) {
-        container.html("");
-        for (key in model.menu) {
-            var dish = model.menu[key];
-            if (!dish) {continue;} // dish might be null
-            container.append(
-                createDishElement(
-                    'images/' + dish.image,
-                    dish.name,
-                    dish.description,
-                    dish.description,
-                    lang));
-        }
+        this.container=container;
+        this.lang=lang;
+        this.model=model;
+
+        this.update();
     };
 
     var createDishElement = function(imgSrc, name, description, preparation, lang) {
@@ -36,6 +29,21 @@ define([], function() {
 
         return div;
     };
+
+    InstructionsView.prototype.update = function(){
+        this.container.html("");
+        for (key in this.model.menu) {
+            var dish = this.model.menu[key];
+            if (!dish) {continue;} // dish might be null
+            this.container.append(
+                createDishElement(
+                    'images/' + dish.image,
+                    dish.name,
+                    dish.description,
+                    dish.description,
+                    this.lang));
+        }
+    }
 
     InstructionsView.prototype.show = function() {
 

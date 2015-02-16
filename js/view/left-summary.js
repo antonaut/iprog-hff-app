@@ -1,18 +1,28 @@
 define([], function() {
 
     var LeftSummary = function(container, lang, model) {
-        container.find("h5").html(lang.mydinner.HEADER);
-        container.find("label").html(lang.mydinner.PEOPLE);
-        container.find("#guests").val(model.guests);
+        this.container=container;
+        this.lang=lang;
+        this.model=model;
 
-        container.find("thead td:first").html(lang.mydinner.DISH_NAME);
-        container.find("thead td:last").html(lang.mydinner.COST);
-        addMenuElements(container.find("tbody"),lang, model);
+        this.update();
+    };
 
-        container.find("tfoot").html("<td></td>\n<td>" + lang.general.currency(
-            model.getTotalMenuPrice()) + "</td>");
+    LeftSummary.prototype.update = function(){
+        console.log("HEEEJ");
 
-        container.find("#confirm-dinner").html(lang.label.CONFIRM_DINNER);
+        this.container.find("h5").html(this.lang.mydinner.HEADER);
+        this.container.find("label").html(this.lang.mydinner.PEOPLE);
+        this.container.find("#guests").val(this.model.guests);
+
+        this.container.find("thead td:first").html(this.lang.mydinner.DISH_NAME);
+        this.container.find("thead td:last").html(this.lang.mydinner.COST);
+        addMenuElements(this.container.find("tbody"),this.lang, this.model);
+
+        this.container.find("tfoot").html("<td></td>\n<td>" + this.lang.general.currency(
+            this.model.getTotalMenuPrice()) + "</td>");
+
+        this.container.find("#confirm-dinner").html(this.lang.label.CONFIRM_DINNER);
     };
 
     var addMenuElements = function(tbody, lang, model) {
