@@ -72,8 +72,6 @@ requirejs([
     // Add cross-references
     selectDishController.attachView(selectDish);
     singleDishController.attachView(leftSummary);
-    leftSummaryController.attachView(leftSummary);
-    leftSummaryController.attachView(singleDishView);
 
     model.addObserver(function(){instructionsView.update();});
     model.addObserver(function(){leftSummary.update();});
@@ -81,8 +79,7 @@ requirejs([
     model.addObserver(function(){singleDishView.update();});
     model.addObserver(function(){summaryOverview.update();});
 
-    model.addDishToMenu(101);
-    model.guests=22;
+    model.guests=4;
 
     model.notifyObservers();
 });

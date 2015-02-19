@@ -5,7 +5,6 @@ define([], function(){
 
     var LeftSummaryController = function(model) {
         this.model = model;
-        this.views = [];
 
         var guestsField=$("#guests");
         guestsField.keypress(function(event){
@@ -19,28 +18,13 @@ define([], function(){
            var guests=$("#guests").val();
             if(guests&&guests>0) {
                 this.model.guests = parseInt(guests)
-                this.updateAllViews();
+                this.model.notifyObservers();
             }
         }).bind(this));
 
         guestsField.on("paste",function(event){
             event.preventDefault();
         });
-    };
-
-    LeftSummaryController.prototype.updateAllViews=function(){
-        for(var index in this.views){
-            this.views[index].update();
-        }
-
-
-
-    };
-
-
-
-    LeftSummaryController.prototype.attachView=function(view){
-        this.views.push(view);
     };
     return LeftSummaryController;
 });

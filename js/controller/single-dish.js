@@ -9,7 +9,7 @@ define([], function(){
 
         $('#ingredient-list button').click((function(){
             this.model.addDishToMenu(this.model.selectedDish);
-            this.view.update();
+            this.model.notifyObservers();
         }).bind(this));
     };
 
