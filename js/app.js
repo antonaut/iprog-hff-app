@@ -19,7 +19,8 @@ requirejs([
     'view/single-dish',
     'controller/page',
     'controller/selectDish',
-    'controller/single-dish'
+    'controller/single-dish',
+    'controller/left-summary'
 
 ], function (
     DinnerModel,
@@ -35,7 +36,8 @@ requirejs([
     SingleDishView,
     PageController,
     SelectDishController,
-    SingleDishController
+    SingleDishController,
+    LeftSummaryController
 ) {
 
     //We instantiate our model
@@ -46,13 +48,14 @@ requirejs([
     var pageController = new PageController(model);
     var selectDishController = new SelectDishController(model);
     var singleDishController = new SingleDishController(model);
+    var leftSummaryController = new LeftSummaryController(model);
 
 
     //And create the needed controllers and views
     var exampleView = new ExampleView($("#exampleView"));
     var headerView = new HeaderView($("#header"), language, model);
     var introView = new IntroView($("#intro"), language);
-    var leftSummary = new LeftSummaryView($("#left-summary"), language, model);
+    var leftSummary = new LeftSummaryView($("#left-summary"), language, model,leftSummaryController);
     var selectDish = new SelectDishView($("#dish-form"), language, model, selectDishController, pageController);
     var myDinnerView = new MyDinnerView($("#mydinner"), language);
     var summaryOverview = new SummaryOverviewView($(".summary"), language, model);
@@ -63,6 +66,8 @@ requirejs([
     // Add cross-references
     selectDishController.attachView(selectDish);
     singleDishController.attachView(leftSummary);
+    leftSummaryController.attachView(leftSummary);
+    leftSummaryController.attachView(singleDishView);
 
     model.addObserver(function(){instructionsView.update();});
     model.addObserver(function(){leftSummary.update();});
