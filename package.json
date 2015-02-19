@@ -1,0 +1,23 @@
+{
+	"name": "iprog-hff-app",
+	"version": "0.0.3",
+	"description": "A showcase front-end application for MVC-architecture.",
+	"contributors": [
+		{
+			"name": "Anton Erholt",
+			"email": "aerholt@kth.se"
+		},
+		{
+			"name": "Fredrik Wallén",
+			"email": "fwallen@kth.se"
+		}
+	],
+	"main": "js/app.js",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/antonaut/iprog-hff-app"
+	},
+	"bugs": {
+		"url": "https://github.com/antonaut/iprog-hff-app/issues"
+	}
+}
