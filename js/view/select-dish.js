@@ -16,15 +16,16 @@ define([], function() {
         this.container.find("input[type=search]").attr('placeholder', this.lang.selectdish.PLACEHOLDER);
         this.container.find("button").html(this.lang.label.SEARCH).click(
             (function(evt){
+
                 var filterString = $('.search input').val();
                 var dishType = $('#dish-type').val();
                 this.searchAndFilter(dishType, filterString);
                 evt.preventDefault();
             }).bind(this)
         );
-        var starter = $("<option>").html(this.lang.dishinfo.STARTER);
-        var main_course = $("<option>").html(this.lang.dishinfo.MAIN_COURSE);
-        var desert = $("<option>").html(this.lang.dishinfo.DESERT);
+        var starter = $("<option>").attr('value',"starter").html(this.lang.dishinfo.STARTER);
+        var main_course = $("<option>").attr('value',"main dish").html(this.lang.dishinfo.MAIN_COURSE);
+        var desert = $("<option>").attr('value','dessert').html(this.lang.dishinfo.DESERT);
         var sel = this.container.find("select").html("");
             sel.append(starter).append(main_course).append(desert);
 

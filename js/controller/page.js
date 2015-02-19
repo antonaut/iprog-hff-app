@@ -67,7 +67,7 @@ define([], function () {
         };
         this.last = 'front-page';
 
-        $('#intro button').click((function () {
+        $('#intro button, #dish-details button, #ingredient-list button').click((function () {
             this.show("select-dish");
         }).bind(this));
     };
