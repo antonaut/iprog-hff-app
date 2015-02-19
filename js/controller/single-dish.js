@@ -5,8 +5,6 @@ define([], function(){
     var SingleDishController = function(model) {
         this.model=model;
 
-        console.log(this.model);
-
         $('#ingredient-list button').click((function(){
             this.model.addDishToMenu(this.model.selectedDish);
             this.view.update();

@@ -1,7 +1,6 @@
 define(['History'], function (History) {
     var PageController = function (model) {
         this.model = model;
-
         this.pages = {
             'front-page': {
                 'show': function () {
@@ -16,24 +15,27 @@ define(['History'], function (History) {
             ,
             'select-dish': {
                 'show': function () {
-                    $('#dish-form').fadeIn();
                     $('.dish-selection').fadeIn();
+                    $('#dish-form').fadeIn();
                 }
 
                 ,
                 'hide': function () {
                     $('#dish-form').fadeOut();
+                    $('.dish-selection').fadeOut();
                 }
             }
             ,
             'single-dish': {
                 'show': function () {
+                    $('.dish-selection').fadeIn();
                     $('#single-dish').fadeIn();
                 }
 
                 ,
                 'hide': function () {
                     $('#single-dish').fadeOut();
+                    $('.dish-selection').fadeOut();
                 }
             }
             ,
@@ -45,36 +47,40 @@ define(['History'], function (History) {
 
                 ,
                 'hide': function () {
+                    $('#mydinner').fadeOut();
                     $('.summary').fadeOut();
                 }
             }
             ,
             'instructions': {
                 'show': function () {
+                    $('.summary').fadeIn();
                     $('#instructions').fadeIn();
                 }
 
                 ,
                 'hide': function () {
-                    $('#mydinner').fadeOut();
-                    $('.summary').show();
-                    $('#instructions').hide();
+                    $('#instructions').fadeOut();
+                    $('.summary').fadeOut();
                 }
             }
         };
 
         $('#intro button').click((function() {
-            this.show('select-dish');
+            History.pushState(null, null, '?select-dish');
         }).bind(this));
         $('#dish-details button').click((function() {
             History.back();
         }).bind(this));
         $('#ingredient-list button').click((function () {
-            this.show('select-dish');
+            History.pushState(null, null, '?select-dish');
+        }).bind(this));
+
+        $('#confirm-dinner').click((function(){
+            History.pushState(null, null, '?mydinner');
         }).bind(this));
 
         History.Adapter.bind(window, 'statechange', (function(evt){
-            console.log('statechange');
             if (location.search.length <= 1){
                 this.pages['front-page'].show();
             } else {
@@ -84,35 +90,39 @@ define(['History'], function (History) {
     };
 
     PageController.prototype.show = function(page_id) {
-        if (this.current) {
-            this.hide(this.current);
-        } else {
-            this.hide('front-page');
+        if (page_id === this.current) { // no use?
+            return;
         }
-
+        if (this.current) {
+            this._hide(this.current);
+        } else {
+            this._hide('front-page');
+        }
         this.pages[page_id].show();
-        History.pushState(null, null, '?'+page_id);
         this.current = page_id;
     };
 
-    PageController.prototype.hide = function(page_id) {
+    PageController.prototype._hide = function(page_id) {
         this.pages[page_id].hide();
     };
 
     PageController.prototype.goToSingleDish = function () {
-        this.show('single-dish');
+        History.pushState(null, null, '?single-dish');
     };
 
 
     PageController.prototype.next = function () {
-
-        this.pages[this.active]['hide']();
+        if (!this.active) {
+            this.active = 0;
+        }
+        var key = this.pages.keys()[this.active];
+        this.pages[key]['hide']();
         if (this.active == this.pages.length - 1) {
             this.active = 0;
         } else {
             this.active = this.active + 1;
         }
-        this.pages[this.active]['show']();
+        this.pages[key]['show']();
     };
 
 
