@@ -14,22 +14,25 @@ define([], function() {
     SelectDish.prototype.update = function(){
         this.container.find("h5").html(this.lang.selectdish.HEADER);
         this.container.find("input[type=search]").attr('placeholder', this.lang.selectdish.PLACEHOLDER);
-        this.container.find("button").html(this.lang.label.SEARCH).click(
-            (function(evt){
+        this.container.find("button").html(this.lang.label.SEARCH).click(this.adaptToChangedFilter.bind(this));
 
-                var filterString = $('.search input').val();
-                var dishType = $('#dish-type').val();
-                this.searchAndFilter(dishType, filterString);
-                evt.preventDefault();
-            }).bind(this)
-        );
+        var sel = this.container.find("select").html("");
+        sel.change(this.adaptToChangedFilter.bind(this));
+
         var starter = $("<option>").attr('value',"starter").html(this.lang.dishinfo.STARTER);
         var main_course = $("<option>").attr('value',"main dish").html(this.lang.dishinfo.MAIN_COURSE);
         var desert = $("<option>").attr('value','dessert').html(this.lang.dishinfo.DESERT);
-        var sel = this.container.find("select").html("");
+
             sel.append(starter).append(main_course).append(desert);
 
         this.searchAndFilter("starter");
+    };
+
+    SelectDish.prototype.adaptToChangedFilter = function(evt){
+        var filterString = $('.search input').val();
+        var dishType = $('#dish-type').val();
+        this.searchAndFilter(dishType, filterString);
+        evt.preventDefault();
     };
 
 
