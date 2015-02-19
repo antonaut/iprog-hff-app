@@ -1,7 +1,7 @@
 /**
  * Created by Fredrik on 2015-02-19.
  */
-define(['History'], function(History) {
+define([], function() {
     var SingleDishController = function(model, PageController) {
         this.model=model;
 
@@ -12,7 +12,7 @@ define(['History'], function(History) {
         }).bind(this));
 
         $('#dish-details button').click((function() {
-            History.back();
+            PageController.back();
         }).bind(this));
     };
 

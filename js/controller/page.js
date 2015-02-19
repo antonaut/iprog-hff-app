@@ -4,70 +4,74 @@ define(['History'], function (History) {
         this.pages = {
             'front-page': {
                 'show': function () {
-                    $('.front-page').fadeIn();
+                    $('.front-page').show();
                 }
 
                 ,
                 'hide': function () {
-                    $('.front-page').fadeOut();
+                    $('.front-page').hide();
                 }
             }
             ,
             'select-dish': {
                 'show': function () {
-                    $('.dish-selection').fadeIn();
-                    $('#dish-form').fadeIn();
+                    $('.dish-selection').show();
+                    $('#dish-form').show();
                 }
 
                 ,
                 'hide': function () {
-                    $('.dish-selection').fadeOut();
+                    $('.dish-selection').hide();
                     $('#dish-form').hide();
                 }
             }
             ,
             'single-dish': {
                 'show': function () {
-                    $('.dish-selection').fadeIn();
-                    $('#single-dish').fadeIn();
+                    $('.dish-selection').show();
+                    $('#single-dish').show();
                 }
 
                 ,
                 'hide': function () {
-                    $('.dish-selection').fadeOut();
+                    $('.dish-selection').hide();
                     $('#single-dish').hide();
                 }
             }
             ,
             'mydinner': {
                 'show': function () {
-                    $('.summary').fadeIn();
-                    $('#mydinner').fadeIn();
+                    $('.summary').show();
+                    $('#mydinner').show();
                 }
 
                 ,
                 'hide': function () {
-                    $('#mydinner').fadeOut();
-                    $('.summary').fadeOut();
+                    $('#mydinner').hide();
+                    $('.summary').hide();
                 }
             }
             ,
             'instructions': {
                 'show': function () {
-                    $('.summary').fadeIn();
-                    $('#instructions').fadeIn();
+                    $('.summary').show();
+                    $('#instructions').show();
                 }
 
                 ,
                 'hide': function () {
-                    $('#instructions').fadeOut();
-                    $('.summary').fadeOut();
+                    $('#instructions').hide();
+                    $('.summary').hide();
                 }
             }
         };
 
         $('#intro button').click((function() {
+            console.log('click');
             History.pushState(null, null, '?select-dish');
+            if (location.search.length > 1) {
+                this.show('select-dish');
+            }
         }).bind(this));
 
         $('#confirm-dinner').click((function(){
@@ -75,7 +79,8 @@ define(['History'], function (History) {
         }).bind(this));
 
         History.Adapter.bind(window, 'statechange', (function(evt){
-            if (location.search.length <= 1){
+            console.log('statechange');
+            if (location.search.length <= 1) {
                 this.pages['front-page'].show();
             } else {
                 this.show(location.search.substr(1));
@@ -84,6 +89,7 @@ define(['History'], function (History) {
     };
 
     PageController.prototype.show = function(page_id) {
+        console.log('show')
         if (page_id === this.current) { // no use?
             return;
         }
@@ -121,6 +127,10 @@ define(['History'], function (History) {
             this.active = this.active + 1;
         }
         this.pages[key]['show']();
+    };
+
+    PageController.prototype.back = function () {
+        History.back();
     };
 
 
