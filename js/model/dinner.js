@@ -56,7 +56,7 @@ define([], function () {
             return this._selectedDish;
         },
         set: function (selectedDish) {
-            console.info("Dish set to ",selectedDish);
+            console.info("SelectedDish set to %d.", selectedDish);
             this._selectedDish = selectedDish;
         }
     });

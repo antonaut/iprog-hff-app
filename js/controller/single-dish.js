@@ -14,10 +14,8 @@ define([], function(){
     };
 
     SingleDishController.prototype.attachView=function(view){
-        this.view=view;
+        this.view = view;
     };
-
-
 
 
     return SingleDishController;

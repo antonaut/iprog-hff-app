@@ -9,7 +9,6 @@ define([], function() {
     };
 
     LeftSummary.prototype.update = function(){
-        console.log("HEEEJ");
 
         this.container.find("h5").html(this.lang.mydinner.HEADER);
         this.container.find("label").html(this.lang.mydinner.PEOPLE);

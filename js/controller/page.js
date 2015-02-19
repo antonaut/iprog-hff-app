@@ -1,31 +1,28 @@
-/**
- * Created by Fredrik on 2015-02-12.
- */
-define([], function () {
+define(['History'], function (History) {
     var PageController = function (model) {
         this.model = model;
 
         this.pages = {
             'front-page': {
                 'show': function () {
-                    $(".front-page").fadeIn();
+                    $('.front-page').fadeIn();
                 }
 
                 ,
                 'hide': function () {
-                    $(".front-page").fadeOut();
+                    $('.front-page').fadeOut();
                 }
             }
             ,
             'select-dish': {
                 'show': function () {
-                    $("#dish-form").fadeIn();
-                    $(".dish-selection").fadeIn();
+                    $('#dish-form').fadeIn();
+                    $('.dish-selection').fadeIn();
                 }
 
                 ,
                 'hide': function () {
-                    $("#dish-form").fadeOut();
+                    $('#dish-form').fadeOut();
                 }
             }
             ,
@@ -37,12 +34,12 @@ define([], function () {
                 ,
                 'hide': function () {
                     $('#single-dish').fadeOut();
-                    $('.dish-selection').fadeOut();
                 }
             }
             ,
             'mydinner': {
                 'show': function () {
+                    $('.summary').fadeIn();
                     $('#mydinner').fadeIn();
                 }
 
@@ -65,21 +62,41 @@ define([], function () {
                 }
             }
         };
-        this.last = 'front-page';
 
-        $('#intro button, #dish-details button, #ingredient-list button').click((function () {
-            this.show("select-dish");
+        $('#intro button').click((function() {
+            this.show('select-dish');
+        }).bind(this));
+        $('#dish-details button').click((function() {
+            History.back();
+        }).bind(this));
+        $('#ingredient-list button').click((function () {
+            this.show('select-dish');
+        }).bind(this));
+
+        History.Adapter.bind(window, 'statechange', (function(evt){
+            console.log('statechange');
+            if (location.search.length <= 1){
+                this.show('front-page');
+            } else {
+                this.show(location.search.substr(1));
+            }
         }).bind(this));
     };
 
     PageController.prototype.show = function(page_id) {
-        this.hideLast();
+        if (this.current) {
+            this.hide(this.current);
+        } else {
+            this.hide('front-page');
+        }
+
         this.pages[page_id].show();
-        this.last = page_id;
+        History.pushState(null, null, '?'+page_id);
+        this.current = page_id;
     };
 
-    PageController.prototype.hideLast = function() {
-        this.pages[this.last].hide();
+    PageController.prototype.hide = function(page_id) {
+        this.pages[page_id].hide();
     };
 
     PageController.prototype.goToSingleDish = function () {

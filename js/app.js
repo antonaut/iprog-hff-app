@@ -1,7 +1,13 @@
 requirejs.config({
     baseUrl: 'js',
     paths: {
-        app: 'app'
+        app: 'app',
+        'History': 'lib/jquery.history'
+    },
+    shim: {
+        'History': {
+            'exports': 'History'
+        }
     }
 });
 
