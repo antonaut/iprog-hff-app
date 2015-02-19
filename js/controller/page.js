@@ -76,7 +76,7 @@ define(['History'], function (History) {
         History.Adapter.bind(window, 'statechange', (function(evt){
             console.log('statechange');
             if (location.search.length <= 1){
-                this.show('front-page');
+                this.pages['front-page'].show();
             } else {
                 this.show(location.search.substr(1));
             }
