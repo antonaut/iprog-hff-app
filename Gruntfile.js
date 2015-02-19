@@ -1,9 +1,12 @@
 module.exports = function(grunt) {
 
+
   var os = require('os');
   var ifaces = os.networkInterfaces();
   var host_ips = [];
 
+
+  // Write out possible IPv4 addresses to console
   Object.keys(ifaces).forEach(function (ifname) {
     var alias = 0
       ;
@@ -26,6 +29,7 @@ module.exports = function(grunt) {
 
     });
   });
+
 
   // Project configuration.
   grunt.initConfig({
