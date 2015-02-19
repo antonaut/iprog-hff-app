@@ -53,7 +53,7 @@ requirejs([
 
     var pageController = new PageController(model);
     var selectDishController = new SelectDishController(model);
-    var singleDishController = new SingleDishController(model);
+    var singleDishController = new SingleDishController(model, pageController);
     var leftSummaryController = new LeftSummaryController(model);
 
 

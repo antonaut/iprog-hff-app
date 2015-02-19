@@ -21,8 +21,8 @@ define(['History'], function (History) {
 
                 ,
                 'hide': function () {
-                    $('#dish-form').fadeOut();
                     $('.dish-selection').fadeOut();
+                    $('#dish-form').hide();
                 }
             }
             ,
@@ -34,8 +34,8 @@ define(['History'], function (History) {
 
                 ,
                 'hide': function () {
-                    $('#single-dish').fadeOut();
                     $('.dish-selection').fadeOut();
+                    $('#single-dish').hide();
                 }
             }
             ,
@@ -67,12 +67,6 @@ define(['History'], function (History) {
         };
 
         $('#intro button').click((function() {
-            History.pushState(null, null, '?select-dish');
-        }).bind(this));
-        $('#dish-details button').click((function() {
-            History.back();
-        }).bind(this));
-        $('#ingredient-list button').click((function () {
             History.pushState(null, null, '?select-dish');
         }).bind(this));
 
@@ -108,6 +102,10 @@ define(['History'], function (History) {
 
     PageController.prototype.goToSingleDish = function () {
         History.pushState(null, null, '?single-dish');
+    };
+
+    PageController.prototype.goToSelectDish = function () {
+        History.pushState(null, null, '?select-dish');    
     };
 
 
