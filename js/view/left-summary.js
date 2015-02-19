@@ -9,8 +9,6 @@ define([], function() {
     };
 
     LeftSummary.prototype.update = function(){
-        console.log("HEEEJ");
-
         this.container.find("h5").html(this.lang.mydinner.HEADER);
         this.container.find("label").html(this.lang.mydinner.PEOPLE);
         this.container.find("#guests").val(this.model.guests);
@@ -30,7 +28,7 @@ define([], function() {
         for (key in model.menu) {
             var dish = model.menu[key];
             if (!dish) {continue;}
-            addMenuElement(tbody, dish.name, model.getDishPrice(dish.id));
+            addMenuElement(tbody, dish.name, model.getDishPrice(dish.id)+'x'+model.guests);
         }
     };
 
