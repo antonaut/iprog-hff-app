@@ -1,6 +1,6 @@
 @font-face {
-    font-family: "Balsamiq Sans";
-    src: url(fonts/BalsamiqSansRegular.ttf) format("truetype");
+  font-family: "Balsamiq Sans";
+  src: url(fonts/BalsamiqSansRegular.ttf) format("truetype");
 }
 
 body {
@@ -8,88 +8,88 @@ body {
 }
 
 body, html, .row, .container-fluid {
-    font-family: "Balsamiq Sans", Verdana, Tahoma;
-    height: 100%;
+  font-family: "Balsamiq Sans", Verdana, Tahoma;
+  height: 100%;
 }
 
 section {
-    padding: 0 !important;
-    overflow: auto;
+  padding: 0 !important;
+  overflow: auto;
 }
 
 button {
-    background-color: #FA8423;
-    border: 1px solid black !important;
-    border-radius: 2px !important;
-    -webkit-box-shadow: 2px 2px 0 black;
-    -moz-box-shadow:  2px 2px 0 black;
-    box-shadow:  2px 2px 0 black;
+  background-color: #FA8423;
+  border: 1px solid black !important;
+  border-radius: 2px !important;
+  -webkit-box-shadow: 2px 2px 0 black;
+  -moz-box-shadow:  2px 2px 0 black;
+  box-shadow:  2px 2px 0 black;
 }
 
 
-#wrap  {
-    margin-top: 56px !important;
+#wrap {
+  margin-top: 56px !important;
 }
 
 .row {
-    overflow-y: auto;
- }
+  overflow-y: auto;
+}
 
 /* Header */
 
 header {
-    background: #ccc;
-    padding-top: 5px;
+  background: #ccc;
+  padding-top: 5px;
 }
 
-h5{
-    font-weight: bold;
+h5 {
+  font-weight: bold;
 }
 
 
 #header h1 {
-    font-size: 2em;
-    margin: 0 12px 0 0;
-    float: left;
-    color: #000000 !important;
+  font-size: 2em;
+  margin: 0 12px 0 0;
+  float: left;
+  color: #000000 !important;
 }
 
 #header .tagline {
-    color: black;
+  color: black;
 }
 
 
 
 header {
-    border-bottom: 1px solid black !important;
+  border-bottom: 1px solid black !important;
 }
 
 .front-page {
-    background: url('../images/bg.png');
-    overflow: hidden;
+  background: url('../images/bg.png');
+  overflow: hidden;
 }
 
 #intro {
-    margin-top: 40px;
-    margin-left: 20px;
-    padding: 15px;
-    border-radius: 3px 3px;
-    background-color: rgba(255, 255, 255, 0.8);
+  margin-top: 40px;
+  margin-left: 20px;
+  padding: 15px;
+  border-radius: 3px 3px;
+  background-color: rgba(255, 255, 255, 0.8);
 }
 
 #intro label, #intro button {
-    float: right;
-    margin-right: 10px;
+  float: right;
+  margin-right: 10px;
 }
 
 
 #left-summary {
-    padding:0 !important;
-    height: 100%;
+  padding:0 !important;
+  height: 100%;
 }
 
 #left-summary #above-table{
-    padding-left: 8px
+  padding-left: 8px
 }
 
 #left-summary table {
@@ -101,162 +101,162 @@ header {
 }
 
 #left-summary tbody {
-    border-bottom: 1px solid black;
+  border-bottom: 1px solid black;
 }
 
 
 #left-summary thead td {
-    padding-top: 0px;
-    padding-bottom: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
 }
 
 #left-summary tfoot td {
-    color: #9C5013;
+  color: #9C5013;
 }
 
 #left-summary tbody td {
-    color: #9C5013;
-    padding-right: 20px;
-    padding-top:4px;
-    padding-bottom: 4px;
-    padding-left:10px
+  color: #9C5013;
+  padding-right: 20px;
+  padding-top:4px;
+  padding-bottom: 4px;
+  padding-left:10px
 }
 
 #left-summary #guests{
-    width:40px;
+  width:40px;
 }
 
 #left-summary label{
-    font-weight: normal;
+  font-weight: normal;
 }
 
 #left-summary thead{
-    color: #000;
-    background-color: #ccc;
-    border-top: 1px solid black;
-    border-bottom: 1px solid black;
+  color: #000;
+  background-color: #ccc;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
 }
 
 .right-panel {
-    border-left: 1px solid black;
-    height: 100%;
+  border-left: 1px solid black;
+  height: 100%;
 }
 
 #single-dish {
 }
 
 #single-dish #ingredient-list{
-    background-color: #FFB070;
-    padding:10px;
+  background-color: #FFB070;
+  padding:10px;
 }
 
 #single-dish p {
-    width: 100%;
+  width: 100%;
 }
 
 .single-dish-preparation{
-    margin-bottom:100px;
+  margin-bottom:100px;
 }
 
 #dish-details img{
-    width:60%;
-    height: auto;
+  width:60%;
+  height: auto;
 }
 
 #dish-details h5{
-    font-size: 2em;
+  font-size: 2em;
 }
 
 #dish-details button{
-    margin-top: 20px;
-    margin-bottom: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 #ingredient-list thead td{
-    font-weight: bold;
+  font-weight: bold;
 }
 
 #ingredient-list tbody td{
-    padding-left: 10px;
-    border-top: 1px solid black;
+  padding-left: 10px;
+  border-top: 1px solid black;
 }
 
 #ingredient-list tfoot td{
-    border-top: 1px solid black;
+  border-top: 1px solid black;
 }
 
 #dish-form .search, #dish-form #dish-type {
-    float: left;
-    margin-right: 50px;
+  float: left;
+  margin-right: 50px;
 }
 
 #select-dish {
-    background-color: #FFB070;
-    height: 100px;
-    padding: 15px;
+  background-color: #FFB070;
+  height: 100px;
+  padding: 15px;
 }
 #select-dish #dish-type{
-    width: 150px;
+  width: 150px;
 }
 
 #dish-list .dish {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
 #dish-list .dish p {
-    margin-top: 10px;
-    font-size: 0.8em;
+  margin-top: 10px;
+  font-size: 0.8em;
 }
 
 #dish-list .dish img {
-    width: 140px;
-    height: 140px;
+  width: 140px;
+  height: 140px;
 }
 
 #dish-list .dish figcaption{
-    text-align: center;
-    font-weight: bold;
+  text-align: center;
+  font-weight: bold;
 }
 
 .info-bar {
-    background-color: #FFB070;
-    border-bottom: 1px solid black;
-    border-top: 0;
-    border-left: 0;
-    border-right: 0;
-    border-radius: 0;
+  background-color: #FFB070;
+  border-bottom: 1px solid black;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  border-radius: 0;
 }
 
 .info-bar button {
-    margin-top: 20px;
-    margin-right: 23px;
+  margin-top: 20px;
+  margin-right: 23px;
 }
 
 .summary .total {
-    border-left: 1px solid black;
+  border-left: 1px solid black;
 }
 
 .summary .dish-summary {
-    height: 200px;
-    margin-bottom: 20px;
+  height: 200px;
+  margin-bottom: 20px;
 }
 
 .summary .print-btn {
-    width: 100%;
+  width: 100%;
 }
 
 
 #instructions .dish-image, #instructions .dish-name{
-    float:left;
+  float:left;
 }
 
 #instructions .dish-image{
-    margin-right: 10px;
+  margin-right: 10px;
 
 }
 
 #instructions .dish-info{
-    clear:left;
+  clear:left;
 }
 
 #instructions #dish-info-holder{
@@ -264,6 +264,6 @@ header {
 }
 
 .margin-down{
-    margin-bottom:30px;
+  margin-bottom:30px;
 
 }
