@@ -8,7 +8,7 @@ define([], function() {
         this.lang = lang;
         this.model = model;
 
-        this.update();
+        //this.update();
     };
 
     SingleDishView.prototype.update = function(){

@@ -167,13 +167,14 @@ define([], function () {
         return $(dishes).filter(function (index, dish) {
             var found = true;
             if (filter) {
+                filter=filter.toLowerCase();
                 found = false;
                 $.each(dish.ingredients, function (index, ingredient) {
-                    if (ingredient.name.indexOf(filter) != -1) {
+                    if (ingredient.name.toLowerCase().indexOf(filter) != -1) {
                         found = true;
                     }
                 });
-                if (dish.name.indexOf(filter) != -1) {
+                if (dish.name.toLowerCase().indexOf(filter) != -1) {
                     found = true;
                 }
             }

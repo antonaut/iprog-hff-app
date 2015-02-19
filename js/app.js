@@ -18,7 +18,8 @@ requirejs([
     'view/instructions',
     'view/single-dish',
     'controller/page',
-    'controller/selectDish'
+    'controller/selectDish',
+    'controller/single-dish'
 
 ], function (
     DinnerModel,
@@ -33,19 +34,18 @@ requirejs([
     InstructionsView,
     SingleDishView,
     PageController,
-    SelectDishController
+    SelectDishController,
+    SingleDishController
 ) {
 
     //We instantiate our model
     var model = new DinnerModel("My awesome birthday!", 25);
 
     model.selectedDish=1;
-    model.addDishToMenu(1); // Toast as starter
-    model.addDishToMenu(100); // Meatballs as main dish
-    model.addDishToMenu(201); // Ice cream as dessert
 
     var pageController = new PageController(model);
     var selectDishController = new SelectDishController(model);
+    var singleDishController = new SingleDishController(model);
 
 
     //And create the needed controllers and views
@@ -62,6 +62,7 @@ requirejs([
 
     // Add cross-references
     selectDishController.attachView(selectDish);
+    singleDishController.attachView(leftSummary);
 
     model.addObserver(function(){instructionsView.update();});
     model.addObserver(function(){leftSummary.update();});
