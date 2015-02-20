@@ -15,9 +15,9 @@ define([], function() {
             var dish = this.model.menu[key];
             if (!dish) {continue;} // dish might be null
             row.append(createDishElement('images/' + dish.image,
-                this.model.getIngredientsPrice(dish["ingredients"]), this.lang));
+                this.model.getIngredientsPrice(dish["ingredients"])*this.model.guests, this.lang));
         }
-        row.append(createTotalElement(this.model.getTotalMenuPrice(), this.lang));
+        row.append(createTotalElement(this.model.getTotalMenuPrice()*this.model.guests, this.lang));
 
         this.container.find(".print-btn").html(this.lang.label.PRINT_FULL_RECIPE);
     };
