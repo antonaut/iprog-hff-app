@@ -54,14 +54,14 @@ define(['History'], function (History) {
             ,
             'instructions': {
                 'show': function () {
-                    $('.summary').show();
+                    $('#mydinner').show();
                     $('#instructions').show();
                 }
 
                 ,
                 'hide': function () {
-                    $('#instructions').hide();
-                    $('.summary').hide();
+                    $('#instructions').hide();                    
+                    $('#mydinner').hide();
                 }
             }
         };
@@ -89,7 +89,7 @@ define(['History'], function (History) {
     };
 
     PageController.prototype.show = function(page_id) {
-        console.log('show')
+        console.log('show %s', page_id)
         if (page_id === this.current) { // no use?
             return;
         }
@@ -113,6 +113,11 @@ define(['History'], function (History) {
     PageController.prototype.goToSelectDish = function () {
         History.pushState(null, null, '?select-dish');    
     };
+
+    PageController.prototype.goToInstructions = function () {
+        History.pushState(null, null, '?instructions');    
+    };
+
 
 
     PageController.prototype.next = function () {

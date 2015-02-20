@@ -26,7 +26,8 @@ requirejs([
     'controller/page',
     'controller/selectDish',
     'controller/single-dish',
-    'controller/left-summary'
+    'controller/left-summary',
+    'controller/mydinner'
 
 ], function (
     DinnerModel,
@@ -43,7 +44,8 @@ requirejs([
     PageController,
     SelectDishController,
     SingleDishController,
-    LeftSummaryController
+    LeftSummaryController,
+    MyDinnerController
 ) {
 
     //We instantiate our model
@@ -55,6 +57,7 @@ requirejs([
     var selectDishController = new SelectDishController(model);
     var singleDishController = new SingleDishController(model, pageController);
     var leftSummaryController = new LeftSummaryController(model);
+    var myDinnerController = new MyDinnerController(model, pageController);
 
 
     //And create the needed controllers and views
