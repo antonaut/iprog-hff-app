@@ -41,7 +41,7 @@ define([], function () {
     language.mydinner.PENDING = "Vald rätt";
 
     language.selectdish = {};
-    language.selectdish.HEADER = "Välj rätt";
+    language.selectdish.HEADER = "Välj rätt (inte fel...)";
     language.selectdish.PLACEHOLDER = "Mmm... Pannkakor!";
 
     language.dishdetails = {};

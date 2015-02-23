@@ -13,7 +13,7 @@ requirejs.config({
 
 requirejs([
     'model/dinner',
-    'model/lang_en',
+    'model/lang_sv',
     'view/example',
     'view/header',
     'view/intro',
