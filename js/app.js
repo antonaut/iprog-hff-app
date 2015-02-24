@@ -2,16 +2,21 @@ requirejs.config({
     baseUrl: 'js',
     paths: {
         app: 'app',
-        'History': 'lib/jquery.history'
+        'History': 'lib/jquery.history',
+        'notify': 'lib/notify.min'
     },
     shim: {
         'History': {
             'exports': 'History'
+        },
+        'notify': {
+            'exports': '$.notify'
         }
     }
 });
 
 requirejs([
+    'notify',
     'model/dinner-bigoven',
     'model/lang_en',
     'view/example',
@@ -30,6 +35,7 @@ requirejs([
     'controller/mydinner'
 
 ], function (
+    notify,
     DinnerModel,
     language,
     ExampleView,
