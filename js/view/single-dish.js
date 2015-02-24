@@ -16,7 +16,6 @@ define([], function() {
         if (!dish) {return;}
         this.container.find("h5:first").html(dish.Title);
         this.container.find("img").attr('src', dish.ImageURL).error(function(){
-            console.log("Exchanging image");
             $(this).unbind("error").attr("src","images/recipe-no-image.jpg");
         });
         this.container.find(".single-dish-description").html(dish.Description);

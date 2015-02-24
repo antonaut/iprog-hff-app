@@ -68,7 +68,6 @@ define([], function() {
                     $.notify(this.lang.general.LOADING, "info");
                     this.selectDishController.setSelectedDish(id);
                 }).bind(this)).error(function(){
-                    console.log("Exchanging image");
                     $(this).unbind("error").attr("src","images/recipe-no-image.jpg");
                 }),
             $name = $('<figcaption>').html(name),
