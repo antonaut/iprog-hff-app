@@ -67,7 +67,10 @@ define([], function() {
                 (function(){
                     $.notify(this.lang.general.LOADING, "info");
                     this.selectDishController.setSelectedDish(id);
-                }).bind(this)),
+                }).bind(this)).error(function(){
+                    console.log("Exchanging image");
+                    $(this).unbind("error").attr("src","images/recipe-no-image.jpg");
+                }),
             $name = $('<figcaption>').html(name),
             $description = $('<p>').html(description),
             $row = $('<div>').append($image).append($name).append($description).addClass('dish col-md-2');

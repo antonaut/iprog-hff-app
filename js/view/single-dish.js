@@ -13,10 +13,12 @@ define([], function() {
 
     SingleDishView.prototype.update = function(){
         var dish = this.model.getSelectedDish();
-        console.debug("SINGLE-DISH: ", dish);
         if (!dish) {return;}
         this.container.find("h5:first").html(dish.Title);
-        this.container.find("img").attr('src', dish.ImageURL);
+        this.container.find("img").attr('src', dish.ImageURL).error(function(){
+            console.log("Exchanging image");
+            $(this).unbind("error").attr("src","images/recipe-no-image.jpg");
+        });
         this.container.find(".single-dish-description").html(dish.Description);
         this.container.find(".single-dish-preparation").html(dish.Instructions);
         this.container.find("#dish-details button").html(this.lang.label.BACK_TO_SELECT);
