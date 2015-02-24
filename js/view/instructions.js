@@ -37,10 +37,10 @@ define([], function() {
             if (!dish) {continue;} // dish might be null
             this.container.append(
                 createDishElement(
-                    'images/' + dish.image,
-                    dish.name,
-                    dish.description,
-                    dish.description,
+                    dish['ImageURL120'],
+                    dish['Title'],
+                    dish['Description'],
+                    dish['Instructions'],
                     this.lang));
         }
     }

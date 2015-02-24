@@ -50,12 +50,12 @@ requirejs([
 
     //We instantiate our model
     var model = new DinnerModel("My awesome birthday!", 25);
-    model.searchForDishes("starter");
+    model.searchForDishes("Salad");
 
     //model.selectedDish=1;
 
-    var pageController = new PageController(model);
-    var selectDishController = new SelectDishController(model);
+    var pageController = new PageController(model, language);
+    var selectDishController = new SelectDishController(model, pageController);
     var singleDishController = new SingleDishController(model, pageController);
     var leftSummaryController = new LeftSummaryController(model);
     var myDinnerController = new MyDinnerController(model, pageController);
@@ -66,7 +66,7 @@ requirejs([
     var headerView = new HeaderView($("#header"), language, model);
     var introView = new IntroView($("#intro"), language);
     var leftSummary = new LeftSummaryView($("#left-summary"), language, model,leftSummaryController);
-    var selectDish = new SelectDishView($("#dish-form"), language, model, selectDishController, pageController);
+    var selectDish = new SelectDishView($("#dish-form"), language, model, selectDishController);
     var myDinnerView = new MyDinnerView($("#mydinner"), language);
     var summaryOverview = new SummaryOverviewView($(".summary"), language, model);
     var instructionsView = new InstructionsView($("#instructions"),language, model);

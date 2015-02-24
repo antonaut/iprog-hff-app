@@ -1,5 +1,6 @@
 define(['History'], function (History) {
-    var PageController = function (model) {
+    var PageController = function (model, lang) {
+        this.lang = lang;
         this.model = model;
         this.pages = {
             'front-page': {
@@ -68,6 +69,7 @@ define(['History'], function (History) {
 
         $('#intro button').click((function() {
             //console.log('click');
+            $.notify(this.lang.general.LOADING, "info");
             this.goToSelectDish();
             if (location.search.length > 1) {
                 this.show('select-dish');

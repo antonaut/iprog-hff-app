@@ -1,11 +1,10 @@
 define([], function() {
 
-    var SelectDish = function (container, lang, model, selectDishController, pageController) {
+    var SelectDish = function (container, lang, model, selectDishController) {
         this.container = container;
         this.lang = lang;
         this.model = model;
         this.selectDishController = selectDishController;
-        this.pageController = pageController;
         this.dishList = this.container.find("#dish-list");
 
         this.update();
@@ -20,9 +19,9 @@ define([], function() {
         var sel = this.container.find("select").html("");
         sel.change(this.adaptToChangedFilter.bind(this));
 
-        var starter = $("<option>").attr('value',"starter").html(this.lang.dishinfo.STARTER);
-        var main_course = $("<option>").attr('value',"main dish").html(this.lang.dishinfo.MAIN_COURSE);
-        var desert = $("<option>").attr('value','dessert').html(this.lang.dishinfo.DESERT);
+        var starter = $("<option>").attr('value',"Salad").html(this.lang.dishinfo.STARTER);
+        var main_course = $("<option>").attr('value',"Main dish").html(this.lang.dishinfo.MAIN_COURSE);
+        var desert = $("<option>").attr('value','Desserts').html(this.lang.dishinfo.DESERT);
 
 
 
@@ -42,24 +41,32 @@ define([], function() {
 
     SelectDish.prototype.showLastSearchResults = function() {
         this.dishList.html("");
+        this.counter = -1;
         var dishes = this.model.getSearchResult();
+        this.row = $('<div>').addClass("row");
 
         $.each(dishes,(function(index, dish){
-            console.log(dish);
-            this.addDish(this.dishList,
+            this.counter++;
+            if (this.counter % 6 == 0) {
+                this.dishList.append(this.row);
+                this.row = $('<div>').addClass("row");
+            }
+            this.addDish(this.row,
                     dish.RecipeID,
                     dish.Title,
                     dish.ImageURL120,
                     dish.description);
         }).bind(this));
+
+        this.dishList.append(this.row);
     };
 
     SelectDish.prototype.addDish = function(dishList, id, name, image, description) {
 
         var $image = $('<img>').attr('src',image).addClass('img-thumbnail').click(
                 (function(){
+                    $.notify(this.lang.general.LOADING, "info");
                     this.selectDishController.setSelectedDish(id);
-                    this.pageController.goToSingleDish();
                 }).bind(this)),
             $name = $('<figcaption>').html(name),
             $description = $('<p>').html(description),

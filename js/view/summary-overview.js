@@ -14,8 +14,8 @@ define([], function() {
         for (key in this.model.menu) {
             var dish = this.model.menu[key];
             if (!dish) {continue;} // dish might be null
-            row.append(createDishElement('images/' + dish.image,
-                this.model.getIngredientsPrice(dish["ingredients"])*this.model.guests, this.lang));
+            row.append(createDishElement(dish["ImageURL120"],
+                this.model.getIngredientsPrice(dish["Ingredients"])*this.model.guests, this.lang));
         }
         row.append(createTotalElement(this.model.getTotalMenuPrice()*this.model.guests, this.lang));
 

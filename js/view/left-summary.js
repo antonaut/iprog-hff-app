@@ -38,7 +38,8 @@ define([], function() {
         for (key in model.menu) {
             var dish = model.menu[key];
             if (!dish) {continue;}
-            addMenuElement(tbody, dish.name, model.getDishPrice(dish.id)*model.guests);
+            console.log("added left-summary: ", dish);
+            addMenuElement(tbody, dish["Title"].substr(0, 20), model.getDishPrice(dish["RecipeID"])*model.guests);
         }
     };
 
@@ -51,7 +52,7 @@ define([], function() {
 
     var addPending = function(tbody, lang, model) {
         var dish = model.getDish(model.selectedDish);
-        var price = model.getDishPrice(dish.id)*model.guests;
+        var price = model.getDishPrice(dish["RecipeID"])*model.guests;
 
         var $name = $('<td>').html(lang.mydinner.PENDING),
             $price = $('<td>').html(price),

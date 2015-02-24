@@ -7,6 +7,7 @@ define([], function () {
     language = {};
     language.general = {};
     language.general.currency = function(crowns) { return "SEK " + crowns; };
+    language.general.LOADING = "Laddar";
 
     language.header = {};
     language.header.HEADER = "HOMELETTE";
