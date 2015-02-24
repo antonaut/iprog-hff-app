@@ -67,8 +67,8 @@ define(['History'], function (History) {
         };
 
         $('#intro button').click((function() {
-            console.log('click');
-            History.pushState(null, null, '?select-dish');
+            //console.log('click');
+            this.goToSelectDish();
             if (location.search.length > 1) {
                 this.show('select-dish');
             }
@@ -79,9 +79,17 @@ define(['History'], function (History) {
         }).bind(this));
 
         History.Adapter.bind(window, 'statechange', (function(evt){
-            console.log('statechange');
+            
+            var state = History.getState();
+            var data = state.data;
+
+            if (data && data.resetSelectedDish) {
+                this.model.selectedDish = null;
+                this.model.notifyObservers();
+            }
+
             if (location.search.length <= 1) {
-                this.pages['front-page'].show();
+                this.show('front-page');
             } else {
                 this.show(location.search.substr(1));
             }
@@ -89,10 +97,11 @@ define(['History'], function (History) {
     };
 
     PageController.prototype.show = function(page_id) {
-        console.log('show %s', page_id)
+        //console.log('show %s', page_id);
         if (page_id === this.current) { // no use?
             return;
         }
+        //console.log('hiding %s', this.current);
         if (this.current) {
             this._hide(this.current);
         } else {
@@ -107,11 +116,12 @@ define(['History'], function (History) {
     };
 
     PageController.prototype.goToSingleDish = function () {
+        //console.log('push');
         History.pushState(null, null, '?single-dish');
     };
 
     PageController.prototype.goToSelectDish = function () {
-        History.pushState(null, null, '?select-dish');    
+        History.pushState({"resetSelectedDish":true}, null, '?select-dish');    
     };
 
     PageController.prototype.goToInstructions = function () {

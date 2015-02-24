@@ -8,7 +8,7 @@ define([], function(){
 
         var guestsField=$("#guests");
         guestsField.keypress(function(event){
-            console.log(event);
+            //console.log(event);
             if(!(event.keyCode >= 48 && event.keyCode <= 57)){
                 event.preventDefault();
             }

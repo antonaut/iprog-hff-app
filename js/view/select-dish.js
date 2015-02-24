@@ -12,6 +12,7 @@ define([], function() {
     };
 
     SelectDish.prototype.update = function(){
+        this.model.selectDish = null;
         this.container.find("h5").html(this.lang.selectdish.HEADER);
         this.container.find("input[type=search]").attr('placeholder', this.lang.selectdish.PLACEHOLDER);
         this.container.find("button").html(this.lang.label.SEARCH).click(this.adaptToChangedFilter.bind(this));
