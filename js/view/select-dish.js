@@ -23,34 +23,39 @@ define([], function() {
         var main_course = $("<option>").attr('value',"main dish").html(this.lang.dishinfo.MAIN_COURSE);
         var desert = $("<option>").attr('value','dessert').html(this.lang.dishinfo.DESERT);
 
+
+
             sel.append(starter).append(main_course).append(desert);
 
-        this.searchAndFilter("starter");
+        this.showLastSearchResults();
     };
 
     SelectDish.prototype.adaptToChangedFilter = function(evt){
         var filterString = $('.search input').val();
         var dishType = $('#dish-type').val();
-        this.searchAndFilter(dishType, filterString);
+        this.model.searchForDishes(dishType, filterString);
+
         evt.preventDefault();
     };
 
 
-    SelectDish.prototype.searchAndFilter = function(type, filter) {
+    SelectDish.prototype.showLastSearchResults = function() {
         this.dishList.html("");
-        var dishes = this.model.getAllDishes(type, filter);
+        var dishes = this.model.getSearchResult();
+
         $.each(dishes,(function(index, dish){
+            console.log(dish);
             this.addDish(this.dishList,
-                    dish.id,
-                    dish.name,
-                    dish.image,
+                    dish.RecipeID,
+                    dish.Title,
+                    dish.ImageURL120,
                     dish.description);
         }).bind(this));
     };
 
     SelectDish.prototype.addDish = function(dishList, id, name, image, description) {
 
-        var $image = $('<img>').attr('src','images/'+image).addClass('img-thumbnail').click(
+        var $image = $('<img>').attr('src',image).addClass('img-thumbnail').click(
                 (function(){
                     this.selectDishController.setSelectedDish(id);
                     this.pageController.goToSingleDish();

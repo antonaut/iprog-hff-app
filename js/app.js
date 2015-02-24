@@ -12,7 +12,7 @@ requirejs.config({
 });
 
 requirejs([
-    'model/dinner',
+    'model/dinner-bigoven',
     'model/lang_en',
     'view/example',
     'view/header',
@@ -50,6 +50,7 @@ requirejs([
 
     //We instantiate our model
     var model = new DinnerModel("My awesome birthday!", 25);
+    model.searchForDishes("starter");
 
     model.selectedDish=1;
 
