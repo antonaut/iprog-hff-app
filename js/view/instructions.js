@@ -17,7 +17,7 @@ define([], function() {
             div = $('<div>').addClass('dish-info'),
             desc = $('<div>').addClass('margin-down'),
             d1 = $('<div>').addClass('dish-image col-md-2').append(img).append(figcaption),
-            d2 = $('<div>').addClass('dish-name col-md-4').append($('<h5>').html(name)).append(
+            d2 = $('<div>').addClass('dish-name col-md-4 col-xs-8').append($('<h5>').html(name)).append(
                     $('<p>').html(description)),
             prep = $('<div>').addClass('col-md-4 container margin-down').append(
                 $('<h5>').html(lang.dishdetails.PREPARATION_HEADER)).append(

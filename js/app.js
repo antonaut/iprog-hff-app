@@ -52,7 +52,7 @@ requirejs([
     var model = new DinnerModel("My awesome birthday!", 25);
     model.searchForDishes("starter");
 
-    model.selectedDish=1;
+    //model.selectedDish=1;
 
     var pageController = new PageController(model);
     var selectDishController = new SelectDishController(model);
@@ -82,8 +82,6 @@ requirejs([
     model.addObserver(function(){selectDish.update();});
     model.addObserver(function(){singleDishView.update();});
     model.addObserver(function(){summaryOverview.update();});
-
-    model.guests=4;
 
     model.notifyObservers();
 });

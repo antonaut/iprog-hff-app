@@ -13,6 +13,7 @@ define([], function() {
 
     SingleDishView.prototype.update = function(){
         var dish = this.model.getDish(this.model.selectedDish);
+        if (!dish) {return;}
         this.container.find("h5:first").html(dish.name);
         this.container.find("img").attr('src', 'images/'+dish.image);
         this.container.find(".single-dish-description").html(dish.description);
@@ -27,7 +28,7 @@ define([], function() {
     };
 
 
-    var addMenuElements = function(tbody,dish, lang, model) {
+    var addMenuElements = function(tbody, dish, lang, model) {
         tbody.html("");        
         for (idx in dish.ingredients) {
             var ingredient = dish.ingredients[idx];

@@ -10,6 +10,7 @@ define([], function() {
     };
 
     LeftSummary.prototype.update = function() {
+        //console.info('LeftSummaryView update!');
         this.container.find("h5").html(this.lang.mydinner.HEADER);
         this.container.find("label").html(this.lang.mydinner.PEOPLE);
         var guestsField=this.container.find("#guests");
@@ -18,7 +19,13 @@ define([], function() {
 
         this.container.find("thead td:first").html(this.lang.mydinner.DISH_NAME);
         this.container.find("thead td:last").html(this.lang.mydinner.COST);
-        addMenuElements(this.container.find("tbody"),this.lang, this.model);
+        var $tbody = this.container.find("tbody");
+        $tbody.html("");
+        addMenuElements($tbody,this.lang, this.model);
+        if (this.model.selectedDish) {
+            //console.debug('Added pending, dish:', this.model.selectedDish);
+            addPending($tbody, this.lang, this.model);
+        }
 
         this.container.find("tfoot").html("<td></td>\n<td>" + this.lang.general.currency(
             this.model.getTotalMenuPrice()*this.model.guests) + "</td>");
@@ -37,6 +44,16 @@ define([], function() {
 
     var addMenuElement = function(tbody, name, price) {
         var $name = $('<td>').html(name),
+            $price = $('<td>').html(price),
+            $row = $('<tr>').append($name).append($price);
+        tbody.append($row);
+    };
+
+    var addPending = function(tbody, lang, model) {
+        var dish = model.getDish(model.selectedDish);
+        var price = model.getDishPrice(dish.id)*model.guests;
+
+        var $name = $('<td>').html(lang.mydinner.PENDING),
             $price = $('<td>').html(price),
             $row = $('<tr>').append($name).append($price);
         tbody.append($row);
