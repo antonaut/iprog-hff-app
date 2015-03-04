@@ -2,14 +2,14 @@
 // display or modify the dinner menu
 dinnerPlannerApp.controller('DinnerCtrl', function ($scope,Dinner) {
 
-  $scope.numberOfGuests = Dinner.getNumberOfGuests();
+  $scope.numberOfGuests = Dinner.guests;
 
   $scope.setNumberOfGuest = function(number){
-    Dinner.setNumberOfGuests(number);
+    Dinner.guests = number;
   }
 
   $scope.getNumberOfGuests = function() {
-    return Dinner.getNumberOfGuests();
+    return Dinner.guests;
   }
 
   // TODO in Lab 5: Implement the methods to get the dinner menu
