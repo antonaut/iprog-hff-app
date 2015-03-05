@@ -49,11 +49,11 @@ dinnerPlannerApp.config(['$routeProvider',
         controller: 'DishCtrl'
       }).
       when('/summary', {
-        templateUrl: 'partials/dinner-summary',
+        templateUrl: 'partials/dinner-summary.html',
         controller: 'DishCtrl' //TODO
       }).
       when('/instructions', {
-        templateUrl: 'partials/instructions',
+        templateUrl: 'partials/instructions.html',
         controller: 'DishCtrl' //TODO
       }).
 
