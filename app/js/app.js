@@ -35,19 +35,28 @@ var dinnerPlannerApp = angular.module('dinnerPlanner', ['ngRoute','ngResource'])
 // 'http://localhost:8000/#/dish/12345'. The 12345 value will be stored in a dishId parameter, which we can
 // then access through $routeParams service. More information on this in the dishCtrl.js 
 dinnerPlannerApp.config(['$routeProvider',
-  function($routeProvider) {
+  function($routeProvider){
     $routeProvider.
       when('/home', {
-        templateUrl: 'partials/home.html'
+        templateUrl: 'partials/front-page.html'
       }).
       when('/search', {
-        templateUrl: 'partials/search.html',
+        templateUrl: 'partials/dish-form.html',
         controller: 'SearchCtrl'
       }).
       when('/dish/:dishId', {
-        templateUrl: 'partials/dish.html',
+        templateUrl: 'partials/single-dish.html',
         controller: 'DishCtrl'
       }).
+      when('/summary', {
+        templateUrl: 'partials/dinner-summary',
+        controller: 'DishCtrl' //TODO
+      }).
+      when('/instructions', {
+        templateUrl: 'partials/instructions',
+        controller: 'DishCtrl' //TODO
+      }).
+
       // TODO in Lab 5: add more conditions for the last two screens (overview and preparation)
       otherwise({
         redirectTo: '/lol'
