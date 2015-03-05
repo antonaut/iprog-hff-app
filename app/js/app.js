@@ -38,7 +38,11 @@ dinnerPlannerApp.config(['$routeProvider',
   function($routeProvider){
     $routeProvider.
       when('/home', {
-        templateUrl: 'partials/front-page.html'
+        templateUrl: 'partials/front-page.html',
+        controller: function(lang_en, $scope){
+          $scope.lang = lang_en;
+          console.log(lang_en);
+        }
       }).
       when('/search', {
         templateUrl: 'partials/dish-form.html',
@@ -61,4 +65,7 @@ dinnerPlannerApp.config(['$routeProvider',
       otherwise({
         redirectTo: '/home'
       });
-  }]);
+  }]).controller(['$lang', '$scope'], function($lang, $scope){
+    $scope.lang = $lang['en'];
+    console.log($lang);
+  });
