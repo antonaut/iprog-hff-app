@@ -21,7 +21,7 @@ dinnerPlannerApp.factory("lang_en", [function () {
     language.dishinfo = {};
     language.dishinfo.STARTER = "Starter";
     language.dishinfo.MAIN_COURSE = "Main";
-    language.dishinfo.DESERT = "Dessert";
+    language.dishinfo.DESSERT = "Dessert";
 
     language.label = {};
     language.label.START_QUICKLY = "start quickly";

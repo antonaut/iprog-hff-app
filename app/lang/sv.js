@@ -1,4 +1,4 @@
-dinnerPlannerApp.factory("sv", function() {
+dinnerPlannerApp.factory("lang_sv", function() {
     language = {};
     language.general = {};
     language.general.currency = function(crowns) { return "SEK " + crowns; };
@@ -15,7 +15,7 @@ dinnerPlannerApp.factory("sv", function() {
     language.dishinfo = {};
     language.dishinfo.STARTER = "Förrätt";
     language.dishinfo.MAIN_COURSE = "Varmrätt";
-    language.dishinfo.DESERT = "Efterrätt";
+    language.dishinfo.DESSERT = "Efterrätt";
 
     language.label = {};
     language.label.START_QUICKLY = "kom igång";

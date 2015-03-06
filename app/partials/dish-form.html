@@ -2,18 +2,20 @@
     <div ng-include="'partials/left-summary.html'"></div>
     <div id="dish-form" class="right-panel offset-md-3 col-md-9">
         <div id="select-dish" class="row">
-            <h5></h5>
+            <h5>{{ lang.label.SEARCH }}</h5>
 
             <form>
                 <div class="search">
                     <form>
                         <input type="search" ng-model="text">
                     </form>
-                    <button class="btn" ng-click="search(text)"></button>
+                    <button class="btn" ng-click="search(text)">{{ lang.label.SEARCH }}</button>
                 </div>
                 <div class="dish-type">
-                    <select id="dish-type"></select>
-                </div>
+                    <select id="dish-type">
+                        <option ng-repeat="dishType in dishTypes" value="{{ dishType.value }}">{{ dishType.name }}</option>
+                    </select
+                </div> 
             </form>
         </div>
         <div ng-repeat="dish in dishes" id="dish-list">
