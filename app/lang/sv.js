@@ -1,4 +1,4 @@
-dinnerPlannerApp.factory("sv", function() {
+dinnerPlannerApp.factory("lang_sv", function() {
     language = {};
     language.general = {};
     language.general.currency = function(crowns) { return "SEK " + crowns; };

@@ -8,7 +8,7 @@
 // also see that we included separate JavaScript files for these modules. Angular
 // has other core modules that you might want to use and explore when you go deeper
 // into developing Angular applications. For this lab, these two will suffice.
-var dinnerPlannerApp = angular.module('dinnerPlanner', ['ngRoute','ngResource']);
+var dinnerPlannerApp = angular.module('dinnerPlanner', ['ngRoute', 'ngResource']);
 
 
 // Here we configure our application module and more specifically our $routeProvider. 
@@ -35,37 +35,41 @@ var dinnerPlannerApp = angular.module('dinnerPlanner', ['ngRoute','ngResource'])
 // 'http://localhost:8000/#/dish/12345'. The 12345 value will be stored in a dishId parameter, which we can
 // then access through $routeParams service. More information on this in the dishCtrl.js 
 dinnerPlannerApp.config(['$routeProvider',
-  function($routeProvider){
+  function($routeProvider) {
     $routeProvider.
-      when('/home', {
-        templateUrl: 'partials/front-page.html',
-        controller: function(lang_en, $scope){
-          $scope.lang = lang_en;
-          console.log(lang_en);
-        }
-      }).
-      when('/search', {
-        templateUrl: 'partials/dish-form.html',
-        controller: 'SearchCtrl'
-      }).
-      when('/dish/:dishId', {
-        templateUrl: 'partials/single-dish.html',
-        controller: 'DishCtrl'
-      }).
-      when('/summary', {
-        templateUrl: 'partials/dinner-summary',
-        controller: 'DishCtrl' //TODO
-      }).
-      when('/instructions', {
-        templateUrl: 'partials/instructions',
-        controller: 'DishCtrl' //TODO
-      }).
+    when('/home', {
+      templateUrl: 'partials/front-page.html',
+      controller: function(lang, $scope) {
+        $scope.lang = lang;
+      }
+    }).
+    when('/search', {
+      templateUrl: 'partials/dish-form.html',
+      controller: 'SearchCtrl'
+    }).
+    when('/dish/:dishId', {
+      templateUrl: 'partials/single-dish.html',
+      controller: 'DishCtrl'
+    }).
+    when('/summary', {
+      templateUrl: 'partials/dinner-summary',
+      controller: 'DishCtrl' //TODO
+    }).
+    when('/instructions', {
+      templateUrl: 'partials/instructions',
+      controller: 'DishCtrl' //TODO
+    }).
 
-      // TODO in Lab 5: add more conditions for the last two screens (overview and preparation)
-      otherwise({
-        redirectTo: '/home'
-      });
-  }]).controller(['$lang', '$scope'], function($lang, $scope){
-    $scope.lang = $lang['en'];
-    console.log($lang);
-  });
+    // TODO in Lab 5: add more conditions for the last two screens (overview and preparation)
+    otherwise({
+      redirectTo: '/home'
+    });
+  }
+]).controller(['$lang', '$scope'], function($lang, $scope) {
+  $scope.lang = $lang['en'];
+  console.log($lang);
+});
+
+dinnerPlannerApp.controller('main', function($rootScope, lang_en) {
+  $rootScope.lang = lang_en;
+});

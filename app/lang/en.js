@@ -2,7 +2,7 @@
  * Created by Fredrik.
  */
 
-dinnerPlannerApp.factory("lang_en", [function () {
+dinnerPlannerApp.factory("lang_en", function () {
 
     language = {};
 
@@ -58,4 +58,4 @@ dinnerPlannerApp.factory("lang_en", [function () {
     language.summary_overview.TOTAL_EQ = "TOTAL:";
 
     return language;
-}]);
+});
