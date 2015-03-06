@@ -7,16 +7,23 @@
             <form>
                 <div class="search">
                     <form>
-                        <input type="search">
+                        <input type="search" ng-model="text">
                     </form>
-                    <button class="btn"></button>
+                    <button class="btn" ng-click="search(text)"></button>
                 </div>
                 <div class="dish-type">
                     <select id="dish-type"></select>
                 </div>
             </form>
         </div>
-        <div id="dish-list">
+        <div ng-repeat="dish in dishes" id="dish-list">
+            <div class="dish col-md-2">
+                <a href="#/dish/{{dish.RecipeID}}">
+                    <img ng-src="{{dish.ImageURL120}}" class="img-thumbnail"/>
+                    <figcaption>{{dish.Title}}</figcaption>
+                    <p>{{dish.Description}}</p>
+                </a>
+            </div>
         </div>
     </div>
 </section>
