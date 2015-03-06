@@ -7,9 +7,10 @@ which module to associate the app with. In app.js we create the "dinnerPlanner" 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Dinner planner</title>
-    <link rel="stylesheet" href="css/style.css">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <!-- Application CSS -->
+    <link rel="stylesheet" href="css/style.css">
     <!-- jQuery -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <!-- Notify.js -->
@@ -46,13 +47,13 @@ which module to associate the app with. In app.js we create the "dinnerPlanner" 
         <div id="header">
             <h1 class="navbar-brand logo">{{ lang.header.HEADER }}</h1>
 
-            <p class="navbar-text tagline"></p>
+            <p class="navbar-text tagline">{{ lang.header.TAGLINE }}</p>
         </div>
     </header>
 
     <div id="wrap" class="container-fluid" >
-        <div ng-view >
-        </div>
+        <span ng-view >
+        </span>
     </div>
 
 

@@ -15,7 +15,7 @@ dinnerPlannerApp.factory("lang_sv", function() {
     language.dishinfo = {};
     language.dishinfo.STARTER = "Förrätt";
     language.dishinfo.MAIN_COURSE = "Varmrätt";
-    language.dishinfo.DESERT = "Efterrätt";
+    language.dishinfo.DESSERT = "Efterrätt";
 
     language.label = {};
     language.label.START_QUICKLY = "kom igång";

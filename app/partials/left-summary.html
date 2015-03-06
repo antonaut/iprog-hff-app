@@ -1,21 +1,24 @@
 <div id="left-summary" class="col-md-3 sidebar">
     <div id="above-table">
-        <h5></h5>
-        <label for="guests"></label>
+        <h5>{{ lang.mydinner.HEADER }}</h5>
+        <label for="guests">{{ lang.mydinner.PEOPLE }}</label>
         <input id="guests" type="number" min="0">
     </div>
     <table class="table">
         <thead>
-        <td></td>
-        <td></td>
+        <td>{{ lang.mydinner.DISH_NAME }}</td>
+        <td>{{ lang.mydinner.COST }}</td>
         </thead>
         <tbody>
-
+        <tr ng-repeat="dish in menu">
+            <td>{{ dish.name }}</td>
+            <td>{{ lang.general.currency(dish.cost) }}</td>
+        </tr>
         </tbody>
         <tfoot>
-        <td></td>
-        <td>asdasd</td>
+            <td></td>
+            <td>{{ lang.general.currency(total) }}</td>
         </tfoot>
     </table>
-    <button class="btn center-block" id="confirm-dinner"></button>
+    <button class="btn center-block" id="confirm-dinner">{{ lang.label.CONFIRM_DINNER }}</button>
 </div>

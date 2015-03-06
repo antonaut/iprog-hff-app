@@ -66,4 +66,6 @@ dinnerPlannerApp.config(['$routeProvider',
 
 dinnerPlannerApp.controller('headerCtrl', function(lang, $scope) {
   $scope.lang = lang;
+  $scope.total = 0;
+  $scope.menu = [{"name":"pancakes", "cost": 10}]
 });
