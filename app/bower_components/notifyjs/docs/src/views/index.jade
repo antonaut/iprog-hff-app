@@ -1,5 +1,8 @@
-doctype html
+!!! 5
 html(lang='en')
+
+  dev = env == 'dev'
+  min = dev ? '' : '.min'
 
   head
     meta(charset='utf-8')

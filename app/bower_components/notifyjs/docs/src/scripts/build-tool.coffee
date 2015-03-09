@@ -19,21 +19,20 @@ window.BuildController = ($scope,$timeout) ->
     }
   ]
 
+
   $(".build-tool-loading").hide()
   $(".build-tool-toggle").show()
 
   App.buildTool = $scope
 
-  $scope.settings = {
-    minify: false
-    default: null
-  }
-
   $scope.styles = []
   $scope.addStyle = (code, premade) ->
-    style = { active: true, code, premade:premade }
-    $scope.styles.push style
-    $scope.settings.default = style unless $scope.settings.default
+    $scope.styles.push { active: true, code, premade:premade }
+
+  $scope.settings = {
+    minify: false
+    default: $scope.styles[0]
+  }
 
   $scope.loadStyle = ->
     style = $scope.premadeStyle
@@ -60,7 +59,7 @@ window.BuildController = ($scope,$timeout) ->
 
   #load bootstrap
   $scope.premadeStyle = $scope.premadeStyles[0]
-  $scope.loadStyle()
+  $scope.loadStyle
 
   #angular has loaded
   $scope.toggle = ->
@@ -80,8 +79,6 @@ window.BuildController = ($scope,$timeout) ->
     $scope.styles.splice i,1
 
   getStyleName = (style) ->
-    unless style?.code
-      return null
     m = style.code.match /\$\.notify\.addStyle\('(["\w-]+)'/
     unless m
       m = style.code.match /\$\.notify\.addStyle\("(['\w-]+)"/

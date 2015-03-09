@@ -3,7 +3,16 @@
 dinnerPlannerApp.controller('DinnerCtrl', function(lang, $scope, Dinner) {
     $scope.lang = lang;
     $scope.numberOfGuests = Dinner.guests;
+    $scope.total = Dinner.getTotalMenuPrice();
 
+    $scope.menu = [];
+
+    for (var i = Dinner.menu.length - 1; i >= 0; i--) {
+        if (Dinner.menu[i]) {
+            $scope.menu.push(Dinner.menu[i]);
+        }
+    };
+    
     $scope.setNumberOfGuest = function(number) {
         Dinner.guests = number;
     }

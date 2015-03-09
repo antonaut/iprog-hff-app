@@ -84,9 +84,6 @@ coreStyle =
       display: none;
       z-index: 1;
       position: absolute;
-    }
-
-    .#{pluginClassName}-hidable {
       cursor: pointer;
     }
 
@@ -281,7 +278,6 @@ class Notification
     @loadHTML()
 
     @wrapper = $(coreStyle.html)
-    @wrapper.addClass "#{pluginClassName}-hidable" if @options.clickToHide
     @wrapper.data pluginClassName, @
     @arrow = @wrapper.find ".#{pluginClassName}-arrow"
     @container = @wrapper.find ".#{pluginClassName}-container"
@@ -563,9 +559,8 @@ $ ->
   insertCSS(coreStyle.css).attr('id', 'core-notify')
 
   #watch all notifications clicks
-  $(document).on 'click', ".#{pluginClassName}-hidable", (e) ->
-    $(@).trigger 'notify-hide'
-
-  $(document).on 'notify-hide', ".#{pluginClassName}-wrapper", (e) ->
-    $(@).data(pluginClassName)?.show false
+  $(document).on 'click notify-hide', ".#{pluginClassName}-wrapper", (e) ->
+    inst = $(@).data pluginClassName
+    if inst and (inst.options.clickToHide or e.type is 'notify-hide')
+      inst.show false
 
