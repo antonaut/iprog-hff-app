@@ -28,7 +28,7 @@ dinnerPlannerApp.factory('Dinner', function ($resource) {
         this.dishes = {};
 
         this.DishSearch = $resource('http://api.bigoven.com/recipes',{pg:1,rpp:25,api_key:this._BIGOVEN_API_KEY});
-        this.Dish = $resource('http://api.bigoven.com/recipe/:id',{api_key:this._BIGOVEN_API_KEY}); 
+        this.Dish = $resource('http://api.bigoven.com/recipe/:id',{id:'@id',api_key:this._BIGOVEN_API_KEY});
     };
 
     DinnerModel.prototype.addObserver = function(callback) {

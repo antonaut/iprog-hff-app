@@ -3,19 +3,24 @@
     <div id="single-dish" class="right-panel offset-md-3 col-md-9 lab2-4">
         <div class="row">
             <div class="col-md-6" id="dish-details">
-                <h5></h5>
-                <img />
-                <p class="single-dish-description"></p>
+                <h5>{{dish.Title}}</h5>
+                <img ng-src="{{dish.ImageURL}}"/>
+                <p class="single-dish-description">{{dish.Description}}</p>
                 <button></button>
                 <h5></h5>
-                <p class="single-dish-preparation"></p>
+                <p class="single-dish-preparation">{{dish.Instructions}}</p>
             </div>
             <div class="col-md-6" id="ingredient-list">
                 <table class="table">
                     <thead>
                     <td colspan="3"></td>
                     </thead>
-                    <tbody>
+                    <tbody ng-repeat="ingredient in dish.Ingredients">
+                        <tr>
+                            <td>{{ingredient.Quantity}}</td>
+                            <td>{{ingredient.Name}}</td>
+                            <td>Need no guests!</td>
+                        </tr>
                     </tbody>
                     <tfoot>
                     <td colspan="2">
