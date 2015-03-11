@@ -45,10 +45,13 @@ which module to associate the app with. In app.js we create the "dinnerPlanner" 
     where you specify which partial should be loaded when. -->
     <header class="navbar navbar-default navbar-fixed-top">
         <div id="header">
-            <h1 class="navbar-brand logo">{{ lang.header.HEADER }}</h1>
-
+            <a href="/#/home">
+                <h1 class="navbar-brand logo">{{ lang.header.HEADER }}</h1>
+            </a>
             <p class="navbar-text tagline">{{ lang.header.TAGLINE }}</p>
         </div>
+        <button ng-click="setLang('en')">English</button>
+        <button ng-click="setLang('sv')">Svenska</button>
     </header>
 
     <div id="wrap" class="container-fluid" >

@@ -64,8 +64,13 @@ dinnerPlannerApp.config(['$routeProvider',
   }
 ]);
 
-dinnerPlannerApp.controller('headerCtrl', function(lang, $scope) {
-  $scope.lang = lang;
+dinnerPlannerApp.controller('headerCtrl', function(lang, $scope, $rootScope) {
+  $rootScope.language = 'en';
+  $rootScope.lang = lang.get($rootScope.language);
+  $rootScope.setLang = function(language) {
+    $rootScope.lang = lang.get(language);
+  };
+  
 });
 
 $.notify.defaults({
