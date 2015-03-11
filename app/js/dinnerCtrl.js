@@ -19,7 +19,7 @@ dinnerPlannerApp.controller('DinnerCtrl', function($rootScope, $scope, Dinner) {
         var dishes = [];
         for (key in Dinner.menu) {
             if(Dinner.menu[key]) {
-                dishes.push(Dinner.menu[key]);
+                dishes.push(Dinner.getDish(Dinner.menu[key]));
             }
         }
         return dishes;
