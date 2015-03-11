@@ -141,12 +141,11 @@ dinnerPlannerApp.factory('Dinner', function ($resource) {
     // Adds the passed dish to the menu. If the dish of that type already exists on the menu
     // it is removed from the menu and the new one added.
     DinnerModel.prototype.addDishToMenu = function (id) {
-        var dish = this.getDish(id);
         if (!dish) {
             throw "No dish with id: " + id;
         }
         var type = dish["Category"];
-        this.menu[type] = dish;
+        this.menu[type] = id;
     };
 
 // Removes dish from menu
