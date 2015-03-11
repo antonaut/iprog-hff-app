@@ -16,9 +16,9 @@ dinnerPlannerApp.factory('Dinner', function ($resource) {
 
         // The dinner menu of the party
         this._menu = {
-            "starter": null,
-            "main dish": null,
-            "dessert": null
+            "Salad": null,
+            "Main Dish": null,
+            "Dessert": null
         };
 
         this._observers = [];
@@ -216,9 +216,22 @@ dinnerPlannerApp.factory('Dinner', function ($resource) {
             if (callback) return callback(this.dishes[dishID]);
             else { return this.dishes[dishID]; }
         }
-
-        var url = "http://api.bigoven.com/recipe/"+dishID+"?api_key="+this._BIGOVEN_API_KEY;
-        $.ajax({
+        this.Dish.get({
+            id: dishID
+        }, (function(obj){
+            if (!this.dishes[obj["RecipeID"]]) {
+                this.dishes[obj["RecipeID"]] = obj;
+            }
+            for (key in obj) {
+                if (!this.dishes[obj["RecipeID"]][key]) {
+                    this.dishes[obj["RecipeID"]][key] = obj[key];
+                }
+            }
+            if(callback){
+                callback(this.dishes[dishID]);
+            }
+        }).bind(this));
+        /*$.ajax({
             type: "GET",
             headers: {
                 Accept : "application/json; charset=utf-8",
@@ -243,7 +256,7 @@ dinnerPlannerApp.factory('Dinner', function ($resource) {
             error: (function(){
                 $.notify("Unable to find dishes. Please check your internet connection.",{className: 'error', globalPosition: 'top center' });
             }).bind(this)
-        });
+        });*/
     };
 
     DinnerModel.prototype.getCurrentDish = function(){

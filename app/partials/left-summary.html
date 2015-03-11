@@ -10,14 +10,14 @@
         <td>{{ lang.mydinner.COST }}</td>
         </thead>
         <tbody>
-        <tr ng-repeat="dish in menu | filter: {'Title': '!!'}">
-            <td>{{ dish.name }}</td>
-            <td>{{ lang.general.currency(dish.cost) }}</td>
+        <tr ng-repeat="dish in getMenu()">
+            <td>{{ dish.Title }}</td>
+            <td>{{ lang.general.currency(getPrice(dish)) }}</td>
         </tr>
         </tbody>
         <tfoot>
             <td></td>
-            <td>{{ lang.general.currency(total) }}</td>
+            <td>{{ lang.general.currency(total()) }}</td>
         </tfoot>
     </table>
     <button class="btn center-block" id="confirm-dinner">{{ lang.label.CONFIRM_DINNER }}</button>

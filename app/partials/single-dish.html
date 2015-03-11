@@ -6,7 +6,9 @@
                 <h5>{{dish.Title}}</h5>
                 <img ng-src="{{dish.ImageURL}}"/>
                 <p class="single-dish-description">{{dish.Description}}</p>
-                <button>{{lang.label.BACK_TO_SELECT}}</button>
+                <a href="/#/search">
+                    <button>{{lang.label.BACK_TO_SELECT}}</button>
+                </a>
                 <h5></h5>
                 <p class="single-dish-preparation">{{dish.Instructions}}</p>
             </div>
@@ -24,7 +26,7 @@
                     </tbody>
                     <tfoot>
                     <td colspan="2">
-                        <button>{{lang.label.CONFIRM_DISH}}</button>
+                        <button ng-click="addDishToMenu(dishId)">{{lang.label.CONFIRM_DISH}}</button>
                     </td>
                     <td>
                     </td>

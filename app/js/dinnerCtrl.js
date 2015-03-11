@@ -2,25 +2,39 @@
 // display or modify the dinner menu
 dinnerPlannerApp.controller('DinnerCtrl', function(lang, $scope, Dinner) {
     $scope.lang = lang;
-    $scope.total = Dinner.getTotalMenuPrice();
+    $scope.total = function() { return Dinner.getTotalMenuPrice()*Dinner.guests; };
 
-    $scope.numberOfGuests=1;
+    $scope.numberOfGuests=Dinner.guests;
 
-    $scope.menu = [];
 
-    for (var i = Dinner.menu.length - 1; i >= 0; i--) {
-        if (Dinner.menu[i]) {
-            $scope.menu.push(Dinner.menu[i]);
+    $scope.getPrice = function(dish){
+        console.log(dish.Ingredients);
+        return Dinner.getIngredientsPrice(dish.Ingredients)*Dinner.guests;
+    };
+
+
+    $scope.getMenu = function(){
+        console.log(Dinner.menu);
+        var dishes = [];
+        for (key in Dinner.menu) {
+            if(Dinner.menu[key]) {
+                dishes.push(Dinner.menu[key]);
+            }
         }
+        return dishes;
+    };
+
+    $scope.addDishToMenu = function(id){
+        Dinner.addDishToMenu(id);
     };
     
     $scope.setNumberOfGuests = function(number) {
         Dinner.guests = number;
-    }
+    };
 
     $scope.getNumberOfGuests = function() {
         return Dinner.guests;
-    }
+    };
 
     // TODO in Lab 5: Implement the methods to get the dinner menu
     // add dish to menu and get total menu price
