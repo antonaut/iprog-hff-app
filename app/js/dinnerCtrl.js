@@ -7,7 +7,6 @@ dinnerPlannerApp.controller('DinnerCtrl', function($rootScope, $scope, Dinner) {
 
 
     $scope.getPrice = function(dish) {
-        console.log(dish.Ingredients);
         return Dinner.getIngredientsPrice(dish.Ingredients)*Dinner.guests;
     };
 
