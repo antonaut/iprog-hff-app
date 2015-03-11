@@ -1,7 +1,6 @@
 // Search controller that we use whenever we have a search inputs
 // and search results
-dinnerPlannerApp.controller('SearchCtrl', function(lang, $scope, Dinner, $rootScope) {
-    var lang = $rootScope.lang;
+dinnerPlannerApp.controller('SearchCtrl', function($scope, Dinner, $rootScope) {
     // TODO in Lab 5: you will need to implement a method that searchers for dishes
     // including the case while the search is still running.
     $scope.search = function() {
@@ -28,14 +27,29 @@ dinnerPlannerApp.controller('SearchCtrl', function(lang, $scope, Dinner, $rootSc
             });
     };
 
+    $scope.getStarterLang = function() {
+        return $rootScope.lang.dishinfo.STARTER;
+    };
+
+    $scope.getMainDishLang = function () {
+        return $rootScope.lang.dishinfo.MAIN_COURSE;
+    };
+
+    $scope.getDessertLang= function() {
+        return $rootScope.lang.dishinfo.DESSERT;
+    };
+
+
     $scope.dishTypes = [{
-        "name": lang.dishinfo.STARTER,
+        "name": $scope.getStarterLang(),
         "value": "salad"
     }, {
-        "name": lang.dishinfo.MAIN_COURSE,
+        "name": $scope.getMainDishLang(),
         "value": "main dish"
     }, {
-        "name": lang.dishinfo.DESSERT,
+        "name": $scope.getDessertLang(),
         "value": "dessert"
     }];
+
+    $scope.selected = $scope.dishTypes[0];
 });

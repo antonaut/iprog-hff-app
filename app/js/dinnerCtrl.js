@@ -13,7 +13,6 @@ dinnerPlannerApp.controller('DinnerCtrl', function($rootScope, $scope, Dinner) {
 
 
     $scope.getMenu = function(){
-        console.log(Dinner.menu);
         var dishes = [];
         for (key in Dinner.menu) {
             if(Dinner.menu[key]) {
