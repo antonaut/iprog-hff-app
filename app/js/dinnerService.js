@@ -3,7 +3,7 @@
 // dependency on any service you need. Angular will insure that the
 // service is created first time it is needed and then just reuse it
 // the next time.
-dinnerPlannerApp.factory('Dinner', function ($resource) {
+dinnerPlannerApp.factory('Dinner', function ($resource,$cookies,$cookieStore) {
   
   
     // DinnerModel Object constructor
@@ -141,11 +141,15 @@ dinnerPlannerApp.factory('Dinner', function ($resource) {
     // Adds the passed dish to the menu. If the dish of that type already exists on the menu
     // it is removed from the menu and the new one added.
     DinnerModel.prototype.addDishToMenu = function (id) {
-        if (!dish) {
-            throw "No dish with id: " + id;
-        }
-        var type = dish["Category"];
-        this.menu[type] = id;
+        this.getDish(id, (function(dish){
+            if (!dish) {
+                throw "No dish with id: " + id;
+            }
+            var type = dish["Category"];
+            this.menu[type] = id;
+            $cookieStore.put("menu",this.menu);
+        }).bind(this));
+
     };
 
 // Removes dish from menu
@@ -175,7 +179,7 @@ dinnerPlannerApp.factory('Dinner', function ($resource) {
 
     DinnerModel.prototype.searchForDishes= function (type, filter, callback,errorcallback) {
         var q = {
-            title_kw: filter,
+            title_kw: filter
         };
 
         if (type) {
