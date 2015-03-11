@@ -15,11 +15,16 @@ dinnerPlannerApp.factory('Dinner', function ($resource,$cookies,$cookieStore) {
         this._currentDish = null;
 
         // The dinner menu of the party
-        this._menu = {
-            "Salad": null,
-            "Main Dish": null,
-            "Dessert": null
-        };
+        this._menu = $cookieStore.get("menu");
+        console.log('menu:', this._menu)
+        if (typeof this._menu === 'undefined') {
+            this._menu = {
+                "Salad": null,
+                "Main Dish": null,
+                "Dessert": null
+            };
+            console.log('menu:', this._menu)
+        }
 
         this._observers = [];
 
@@ -187,6 +192,7 @@ dinnerPlannerApp.factory('Dinner', function ($resource,$cookies,$cookieStore) {
         this.DishSearch.get(q,
             (function(data) {
                 this._lastSearch=data["Results"];
+                console.log(data);
                 data["Results"].forEach((function(obj){
                     if (!this.dishes[obj["RecipeID"]]) {
                         this.dishes[obj["RecipeID"]] = obj;
