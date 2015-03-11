@@ -9,11 +9,10 @@
                     <form>
                         <input type="search" ng-model="text">
                     </form>
-                    <button class="btn" ng-click="search(text)">{{ lang.label.SEARCH }}</button>
+                    <button class="btn" ng-click="search()">{{ lang.label.SEARCH }}</button>
                 </div>
                 <div class="dish-type">
-                    <select id="dish-type">
-                        <option ng-repeat="dishType in dishTypes" value="{{ dishType.value }}">{{ dishType.name }}</option>
+                    <select ng-options="dishType.name for dishType in dishTypes" id="dish-type" ng-model="selected" ng-change="search()">
                     </select>
                 </div> 
             </form>
