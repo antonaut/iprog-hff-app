@@ -1,7 +1,7 @@
 // Dinner controller that we use whenever we have view that needs to 
 // display or modify the dinner menu
 dinnerPlannerApp.controller('DinnerCtrl', function($rootScope, $scope, Dinner) {
-    $scope.total = Dinner.getTotalMenuPrice();
+    $scope.total = function() { return Dinner.getTotalMenuPrice()*$scope.getNumberOfGuests() };
 
     $scope.numberOfGuests=Dinner.guests;
 
