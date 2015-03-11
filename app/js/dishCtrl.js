@@ -8,9 +8,7 @@ dinnerPlannerApp.controller('DishCtrl', function($scope, $routeParams, Dinner) {
   var dishName = $routeParams.dishId;
 
 
-
-  //NOT DONE, JUST COPIED FROM searchCtrl.js
-  Dinner.Dish.get({
+    Dinner.Dish.get({
     id: dishName
   }, function(data) {
     console.log(data);

@@ -2,7 +2,7 @@
     <div id="above-table">
         <h5>{{ lang.mydinner.HEADER }}</h5>
         <label for="guests">{{ lang.mydinner.PEOPLE }}</label>
-        <input id="guests" type="number" min="0" value="{{ numberOfGuests }}">
+        <input id="guests" type="number" min="0" ng-model="numberOfGuests" ng-change="setNumberOfGuests(numberOfGuests)">
     </div>
     <table class="table">
         <thead>

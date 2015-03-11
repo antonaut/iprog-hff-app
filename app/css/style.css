@@ -23,6 +23,11 @@ button {
   box-shadow:  2px 2px 0 black;
 }
 
+a {
+    color: inherit;
+    outline: none;
+}
+
 
 #wrap {
   padding-top: 70px;
