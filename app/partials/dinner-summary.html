@@ -1,13 +1,26 @@
 <section id="mydinner">
-    <div ng-include="'my-dinner-top'"></div>
+    <div ng-include="'partials/my-dinner-top.html'"></div>
     <div class="summary container">
         <div class="summary-overview col-md-10 col-md-offset-1">
             <div class="row">
+                <div class="dish-summary col-md-3" ng-repeat="menuItem in getMenu()">
+                    <img ng-src="{{ getImgSrc(menuItem) }}">
+                    <figcaption>{{ lang.general.currency(getPrice(menuItem)) }}</figcaption>
+                </div>
+                <div>
+                    <p>
+                        <b>
+                            {{ lang.general.currency(total()) }}
+                        </b>
+                    </p>
+                </div>
             </div>
         </div>
         <div class="col
             -md-8 col-md-offset-2">
-            <button class="print-btn"></button>
+            <a href="/#/instructions">
+                <button class="print-btn">{{ lang.label.PRINT_FULL_RECIPE }}</button>
+            </a>
         </div>
     </div>
 </section>

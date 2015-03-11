@@ -1,6 +1,21 @@
 <section id="mydinner">
-    <div ng-include="my-dinner-top"></div>
-    <div id="instructions" class="container">
-    </div>
-
+    <div ng-include="'partials/my-dinner-top.html'"></div>
+    <div id="instructions" class="container" ng-repeat="menuItem in getMenu()">
+        <div class="dish-info">
+            <div class="margin-down">
+                <div class="dish-image col-md-2">
+                    <img ng-src="{{ menuItem['ImageURL120'] }}">
+                    <figcaption>{{ menuItem.Title }}</figcaption>
+                </div>
+                <div class="dish-name col-md-4 col-xs-8">
+                    <h5>{{ menuItem.Title }}</h5>
+                    <p>{{ menuItem.Description }}</p>
+                </div>
+            </div>
+            <div class="col-md-4 container margin-down">
+                <h5>{{ lang.dishdetails.PREPARATION_HEADER }}</h5>
+                <p>{{ menuItem['Instructions'] }}</p>
+            </div>
+        </div>
+   </div>
 </section>
