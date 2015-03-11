@@ -52,7 +52,7 @@ dinnerPlannerApp.factory("lang_en", [function () {
     language.dishdetails.PREPARATION_HEADER = "Preparation";
 
     language.dinner_overview= {};
-    language.dinner_overview.header =  function (numberOfPeople) {return "My dinner: "+numberOfPeople+ " PEOPLE";};
+    language.dinner_overview.header =  function (numberOfPeople) {return "My dinner: "+numberOfPeople+ " people";};
 
     language.summary_overview = {};
     language.summary_overview.TOTAL_EQ = "TOTAL:";

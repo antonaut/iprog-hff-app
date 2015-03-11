@@ -1,4 +1,6 @@
-<div class="info-bar navbar navbar-default">
-    <h2 class="navbar-text">asdasd</h2>
-    <button class="navbar-right">asdasd</button>
+<div class="info-bar navbar navbar-default" ng-controller="DinnerCtrl">
+    <h2 class="navbar-text">{{ lang.dinner_overview.header(getNumberOfGuests()) }}</h2>
+    <a href="/#/search">
+    	<button class="navbar-right">{{ lang.label.BACK_TO_EDIT }}</button>
+    </a>
 </div>

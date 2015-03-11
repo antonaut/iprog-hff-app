@@ -6,13 +6,16 @@ dinnerPlannerApp.controller('DinnerCtrl', function($rootScope, $scope, Dinner) {
     $scope.numberOfGuests=Dinner.guests;
 
 
-    $scope.getPrice = function(dish){
+    $scope.getPrice = function(dish) {
         console.log(dish.Ingredients);
         return Dinner.getIngredientsPrice(dish.Ingredients)*Dinner.guests;
     };
 
-
-    $scope.getMenu = function(){
+    $scope.getImgSrc = function(dish) {
+        console.log(dish);
+        return dish['ImageURL120'];
+    };
+    $scope.getMenu = function() {
         var dishes = [];
         for (key in Dinner.menu) {
             if(Dinner.menu[key]) {
