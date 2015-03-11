@@ -17,7 +17,7 @@ dinnerPlannerApp.controller('SearchCtrl', function($scope, Dinner, $rootScope) {
         }
 
         $scope.status = "Searching...";
-        Dinner.DishSearch.get(q,
+        Dinner.searchForDishes(title,primary_cat,
             function(data) {
                 $scope.dishes = data.Results;
                 $scope.status = "Showing " + data.Results.length + " results";

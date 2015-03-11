@@ -174,7 +174,28 @@ dinnerPlannerApp.factory('Dinner', function ($resource) {
         return(this._lastSearch);
     };
 
-    DinnerModel.prototype.searchForDishes= function (type, filter) {
+    DinnerModel.prototype.searchForDishes= function (type, filter, callback,errorcallback) {
+        var q = {
+            title_kw: filter,
+        };
+
+        if (type) {
+            q['include_primarycat'] = type;
+        }
+        this.DishSearch.get(q,
+            (function(data) {
+                this._lastSearch=data["Results"];
+                data["Results"].forEach((function(obj){
+                    if (!this.dishes[obj["RecipeID"]]) {
+                        this.dishes[obj["RecipeID"]] = obj;
+                    }
+                }).bind(this));
+                callback(data);
+            }).bind(this)),
+            function(){
+                errorcallback();
+            };
+    /*
         var url = "http://api.bigoven.com/recipes?api_key="+this._BIGOVEN_API_KEY+"&pg=1&rpp=50";
         if(type){
             url += "&include_primarycat="+type;
@@ -205,6 +226,7 @@ dinnerPlannerApp.factory('Dinner', function ($resource) {
             }).bind(this)
 
         });
+        */
     };
 
     DinnerModel.prototype.getSelectedDish = function() {
